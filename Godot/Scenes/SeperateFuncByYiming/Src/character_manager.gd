@@ -33,11 +33,85 @@ func _process(delta):
     if Input.is_action_just_pressed("player_power_separate"):
         on_separate_charactors()
         
-    # test code
-    #if check_all_type("CharacterBody2D"):
-        #test_move_charactor("CharacterBody2D")
-    #elif check_all_type("RigidBody2D"):
-        #test_move_charactor("RigidBody2D")
+    # code for move
+    move_charactor("RigidBody2D")
+    return
+
+"""
+--------------------------------------------------
+    Code for the character movement
+--------------------------------------------------
+"""
+func move_charactor(type: String):
+    """
+        Behavior:
+            Move the character
+        Args:
+            type (String): The type of the character, either CharacterBody2D or RigidBody2D
+        Returns:
+            None
+    """
+    # assert the characters are CharacterBody2D
+    # move the characters
+    if is_separated:
+        if type == "CharacterBody2D":
+            assert(false, "Error: The type of the character is not Implemented")
+        elif type == "RigidBody2D":
+            # move the char1 and char2 seperatly
+            move_char1()
+            move_char2()
+        else:
+            assert(false, "Error: The type of the character is not CharacterBody2D nor RigidBody2D")
+    else:
+        if type == "CharacterBody2D":
+            assert(false, "Error: The type of the character is not Implemented")
+        elif type == "RigidBody2D":
+            # move the charBoth
+            move_charBoth()
+        else:
+            assert(false, "Error: The type of the character is not CharacterBody2D nor RigidBody2D")
+    return
+
+func move_charBoth():
+    """
+        Behavior:
+            Move the charBoth
+        Args:
+            None
+        Returns:
+            None
+    """
+    # Do some thing:
+    # here is just a simple example
+    # charBoth.set_linear_velocity(Vector2(10, 0))
+    return
+
+func move_char1():
+    """
+        Behavior:
+            Move the char1
+        Args:
+            None
+        Returns:
+            None
+    """
+    # Do some thing:
+    # here is just a simple example
+    # char1.set_linear_velocity(Vector2(-10, 0))
+    return
+
+func move_char2():
+    """
+        Behavior:
+            Move the char2
+        Args:
+            None
+        Returns:
+            None
+    """
+    # Do some thing:
+    # here is just a simple example
+    # char2.set_linear_velocity(Vector2(-10, 0))
     return
 
 
