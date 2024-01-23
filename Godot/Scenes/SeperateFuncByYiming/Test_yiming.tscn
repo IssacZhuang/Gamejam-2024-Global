@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cctgoj0y3ty73"]
+[gd_scene load_steps=9 format=3 uid="uid://cctgoj0y3ty73"]
 
 [ext_resource type="Texture2D" uid="uid://kx17d2a8qxgb" path="res://Textures/CatHead.png" id="1_uod6h"]
-[ext_resource type="Script" path="res://player.gd" id="2_1euc0"]
 [ext_resource type="Texture2D" uid="uid://bv5abp4u8vlpo" path="res://Textures/CatBody.png" id="2_icu2f"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/character_manager.gd" id="3_xsa1r"]
 
@@ -51,7 +50,6 @@ charBoth = NodePath("CharacterBoth")
 
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(2, 3)
-script = ExtResource("2_1euc0")
 
 [node name="Character1AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character1"]
 sprite_frames = SubResource("SpriteFrames_0osm2")
@@ -60,7 +58,6 @@ sprite_frames = SubResource("SpriteFrames_0osm2")
 polygon = PackedVector2Array(-17, -31, -17, -27, -18, -26, -18, -16, -16, -14, -18, -11, -18, -6, -8, 3, 7, 3, 17, -7, 17, -10, 16, -13, 15, -14, 15, -18, 16, -18, 16, -23, 15, -24, 15, -27, 14, -28, 14, -30, 13, -31, 8, -31, -1, -24, -11, -32, -15, -32)
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
-script = ExtResource("2_1euc0")
 
 [node name="Character2AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character2"]
 sprite_frames = SubResource("SpriteFrames_bhrbh")

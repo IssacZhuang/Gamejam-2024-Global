@@ -28,41 +28,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    delta = delta # we may use it later 
+    
     # trigger by input
     if Input.is_action_just_pressed("player_power_separate"):
         on_separate_charactors()
         
     # test code
-    test_move_charactor()
+    #if check_all_type("CharacterBody2D"):
+        #test_move_charactor("CharacterBody2D")
+    #elif check_all_type("RigidBody2D"):
+        #test_move_charactor("RigidBody2D")
     return
 
-"""
---------------------------------------------------
-    test function (moving the characters)
---------------------------------------------------
-"""
-func test_move_charactor():
-    """
-        Behavior:
-            test for moving the character, check if the characters are separated or not
-                If the characters are separated:
-                    Move each char1 and char2 separately 
-                If the characters are not separated:
-                    Move the charBoth
-        Args:
-            None
-        Returns:
-            None
-    """
-    if is_separated:
-        char1.velocity.x = 10
-        char1.move_and_slide()
-        char2.move_and_slide()
-    else:
-        charBoth.velocity.y = 10
-        charBoth.move_and_slide()
-    return
-    
+
 """
 --------------------------------------------------
     Event for the character separation
@@ -81,7 +60,12 @@ func on_separate_charactors():
     """
     if not is_separated:
         is_separated = true
-        separate_charactors_logic()
+        if check_all_type("CharacterBody2D"):
+            separate_charactors_logic("CharacterBody2D")
+        elif check_all_type("RigidBody2D"):
+            separate_charactors_logic("RigidBody2D")
+        else:
+            print("Error: The type of the character is not CharacterBody2D or RigidBody2D")
     return
 
 """
@@ -89,18 +73,28 @@ func on_separate_charactors():
     Functions for the character separation
 --------------------------------------------------
 """
-func separate_charactors_logic():
+func separate_charactors_logic(type: String):
     """
         Behavior:
             separate the characters from each other
         Args:
-            None
+            type (String): The type of the character, either CharacterBody2D or RigidBody2D
         Returns:
             None
     """
     # save the velocity and position
-    var v = charBoth.velocity
-    var p = charBoth.position
+    var v = Vector2()
+    var v_a = Vector2()
+    var p = Vector2()
+
+    # get the velocity and position
+    if type == "CharacterBody2D":
+        v = charBoth.velocity
+        p = charBoth.position
+    elif type == "RigidBody2D":
+        v = charBoth.get_linear_velocity()
+        v_a = charBoth.get_angular_velocity()
+        p = charBoth.get_position()
     
     # separate the characters
     separate_charactors()
@@ -111,10 +105,18 @@ func separate_charactors_logic():
     change_parent(char2, self)
 
     # maintain the velocity and position
-    char1.velocity = v
-    char2.velocity = v
-    char1.position = p
-    char2.position = p
+    if type == "CharacterBody2D":
+        char1.velocity = v
+        char2.velocity = v
+        char1.position = p
+        char2.position = p
+    elif type == "RigidBody2D":
+        char1.set_linear_velocity(v)
+        char2.set_linear_velocity(v)
+        char1.set_angular_velocity(v_a)
+        char2.set_angular_velocity(v_a)
+        char1.set_position(p)
+        char2.set_position(p)
     return
 
 """
@@ -189,3 +191,61 @@ func remove_node(node: Node2D):
     """
     node.get_parent().remove_child(node)
     return
+
+func check_all_type(type: String):
+    """
+        Behavior:
+            Check if all character node is a specific type
+        Args:
+            types (String): The types to check
+        Returns:
+            bool: True if the node is the specific type, False if not
+    """
+    return check_type(char1, type) and check_type(char2, type) and check_type(charBoth, type)
+
+func check_type(node: Node2D, type: String):
+    """
+        Behavior:
+            Check if the node is the type
+        Args:
+            node (Node2D): The node to check
+            type (String): The type to check
+        Returns:
+            bool: True if the node is the type, False if not
+    """
+    return node.get_class() == type
+
+#"""
+#--------------------------------------------------
+    #test function (moving the characters)
+#--------------------------------------------------
+#"""
+#func test_move_charactor(type: String):
+    #"""
+        #Behavior:
+            #test for moving the character, check if the characters are separated or not
+                #If the characters are separated:
+                    #Move each char1 and char2 separately 
+                #If the characters are not separated:
+                    #Move the charBoth
+        #Args:
+            #type (String): The type of the character, either CharacterBody2D or RigidBody2D
+        #Returns:
+            #None
+    #"""
+    ## assert the characters are CharacterBody2D
+    ## move the characters
+    #if is_separated:
+        #if type == "CharacterBody2D":
+            #char1.velocity.x = 10
+            #char1.move_and_slide()
+            #char2.move_and_slide()
+        #elif type == "RigidBody2D":
+            #char1.set_linear_velocity(Vector2(-10, 0))
+    #else:
+        #if type == "CharacterBody2D":
+            #charBoth.velocity.x = 10
+            #charBoth.move_and_slide()
+        #elif type == "RigidBody2D":
+            #charBoth.set_linear_velocity(Vector2(10, 0))
+    #return
