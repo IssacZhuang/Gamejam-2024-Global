@@ -28,7 +28,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    delta = delta # we may use it later 
     
     # trigger by input
     if Input.is_action_just_pressed("player_power_separate"):
