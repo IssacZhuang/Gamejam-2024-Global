@@ -16,24 +16,24 @@ extends Node2D
 @export var char2: Node2D = null
 @export var charBoth: Node2D = null
 
-var is_seperated: bool = false
+var is_separated: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # move the characters attributes to charBoth node
-    _merge_charactors()
+    merge_charactors()
     return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     # trigger by input
-    if Input.is_action_just_pressed("player_power_seperate"):
-        _on_seperate_charactors()
+    if Input.is_action_just_pressed("player_power_separate"):
+        on_separate_charactors()
         
     # test code
-    _test_move_charactor()
+    test_move_charactor()
     return
 
 """
@@ -41,20 +41,20 @@ func _process(delta):
     test function (moving the characters)
 --------------------------------------------------
 """
-func _test_move_charactor():
+func test_move_charactor():
     """
         Behavior:
-            test for moving the character, check if the characters are seperated or not
-                If the characters are seperated:
+            test for moving the character, check if the characters are separated or not
+                If the characters are separated:
                     Move each char1 and char2 separately 
-                If the characters are not seperated:
+                If the characters are not separated:
                     Move the charBoth
         Args:
             None
         Returns:
             None
     """
-    if is_seperated:
+    if is_separated:
         char1.velocity.x = 10
         char1.move_and_slide()
         char2.move_and_slide()
@@ -69,19 +69,19 @@ func _test_move_charactor():
 --------------------------------------------------
 """
 
-func _on_seperate_charactors():
+func on_separate_charactors():
     """
         Behavior:
             On Event: change the parent from charBoth to char1 and char2
-            **Once this func called, the trigger 'is_seperated' will be set to true**
+            **Once this func called, the trigger 'is_separated' will be set to true**
         Args:
             None
         Returns:
             None
     """
-    if not is_seperated:
-        is_seperated = true
-        seperate_charactors()
+    if not is_separated:
+        is_separated = true
+        separate_charactors_logic()
     return
 
 """
@@ -89,10 +89,10 @@ func _on_seperate_charactors():
     Functions for the character separation
 --------------------------------------------------
 """
-func seperate_charactors():
+func separate_charactors_logic():
     """
         Behavior:
-            Seperate the characters from each other
+            separate the characters from each other
         Args:
             None
         Returns:
@@ -102,13 +102,13 @@ func seperate_charactors():
     var v = charBoth.velocity
     var p = charBoth.position
     
-    # seperate the characters
-    _seperate_charactors()
+    # separate the characters
+    separate_charactors()
     # remove the charBoth node
-    _remove_node(charBoth)
+    remove_node(charBoth)
     # change the parent of each characters to the root node
-    _change_parent(char1, self)
-    _change_parent(char2, self)
+    change_parent(char1, self)
+    change_parent(char2, self)
 
     # maintain the velocity and position
     char1.velocity = v
@@ -122,7 +122,7 @@ func seperate_charactors():
     utilize func for the character seperation
 --------------------------------------------------
 """
-func _merge_charactors():
+func merge_charactors():
     """
         Behavior:
             Merge the characters into one
@@ -131,24 +131,24 @@ func _merge_charactors():
         Returns:
             None
     """
-    _change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
-    _change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
+    change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
+    change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
     return
 
-func _seperate_charactors():
+func separate_charactors():
     """
         Behavior:
-            Seperate the characters from each other
+            separate the characters from each other
         Args:
             None
         Returns:
             None
     """
-    _change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, char1)
-    _change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, char2)
+    change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, char1)
+    change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, char2)
     return
 
-func _change_char_attribute_parent(charAnimation: AnimatedSprite2D, charCollisionShape: CollisionPolygon2D, targetParent: Node2D):
+func change_char_attribute_parent(charAnimation: AnimatedSprite2D, charCollisionShape: CollisionPolygon2D, targetParent: Node2D):
     """
         Behavior:
             Remove the character from its parent and add it to the new parent
@@ -160,11 +160,11 @@ func _change_char_attribute_parent(charAnimation: AnimatedSprite2D, charCollisio
         Returns:    
             None
     """
-    _change_parent(charAnimation, targetParent)
-    _change_parent(charCollisionShape, targetParent)
+    change_parent(charAnimation, targetParent)
+    change_parent(charCollisionShape, targetParent)
     return 
 
-func _change_parent(node: Node2D, parent: Node2D):
+func change_parent(node: Node2D, parent: Node2D):
     """
         Behavior:
             Remove the node from its parent and add it to the new parent
@@ -178,7 +178,7 @@ func _change_parent(node: Node2D, parent: Node2D):
     parent.add_child(node)
     return 
 
-func _remove_node(node: Node2D):
+func remove_node(node: Node2D):
     """
         Behavior:
             Remove the node from its parent

@@ -65,4 +65,4 @@ offset_right = 467.0
 offset_bottom = -138.0
 text = "separate"
 
-[connection signal="pressed" from="Button" to="CharacteManager" method="_on_seperate_charactors"]
+[connection signal="pressed" from="Button" to="CharacteManager" method="on_separate_charactors"]
