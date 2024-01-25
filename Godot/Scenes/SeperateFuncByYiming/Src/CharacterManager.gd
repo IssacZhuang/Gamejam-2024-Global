@@ -36,7 +36,7 @@ var is_separated: bool = false
 func _ready():
 	# move the characters attributes to charBoth node
 	
-	hide()
+	#hide()
 	merge_charactors()
 	separate.connect(char1.on_separate)
 	separate.connect(char2.on_separate)
@@ -44,10 +44,10 @@ func _ready():
 	return
 
 func start(pos):
-	position = pos
+	charBoth.position = pos
 	#char1.start()
 	#char2.start()
-	show()
+	#show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
