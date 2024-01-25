@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvefj0ur8g1u4"]
 
-[ext_resource type="Script" path="res://CatsFly.gd" id="1_g4ox2"]
-[ext_resource type="Script" path="res://EndPositionManager.gd" id="2_12wps"]
-[ext_resource type="Script" path="res://EndPosition.gd" id="2_mhvdj"]
+[ext_resource type="Script" path="res://Scripts/CatsFly.gd" id="1_oarrk"]
+[ext_resource type="Script" path="res://Scripts/PointManager.gd" id="2_woai3"]
+[ext_resource type="Script" path="res://Scripts/EndPosition.gd" id="3_0t4ro"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="4_53qoi"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="5_4jcd1"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="6_gtbgn"]
@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [node name="CatsFly" type="Node2D"]
-script = ExtResource("1_g4ox2")
+script = ExtResource("1_oarrk")
 
 [node name="Blocks" type="Node2D" parent="."]
 
@@ -83,10 +83,10 @@ offset_bottom = 1074.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PointManager" type="Node" parent="." node_paths=PackedStringArray("endPointsTemplate", "startPositon")]
-script = ExtResource("2_12wps")
-endPointsTemplate = NodePath("EndPosition")
-startPositon = NodePath("StartPosition")
+[node name="PointManager" type="Node" parent="." node_paths=PackedStringArray("endPoint", "startPoint")]
+script = ExtResource("2_woai3")
+endPoint = NodePath("EndPosition")
+startPoint = NodePath("StartPosition")
 
 [node name="StartPosition" type="Node2D" parent="PointManager"]
 position = Vector2(100, 900)
@@ -108,7 +108,7 @@ color = Color(0.188235, 0.74902, 0, 1)
 
 [node name="EndPosition" type="Area2D" parent="PointManager"]
 position = Vector2(1744, 911)
-script = ExtResource("2_mhvdj")
+script = ExtResource("3_0t4ro")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="PointManager/EndPosition"]
