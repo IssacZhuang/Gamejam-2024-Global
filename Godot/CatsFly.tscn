@@ -1,20 +1,148 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvefj0ur8g1u4"]
+[gd_scene load_steps=18 format=3 uid="uid://cvefj0ur8g1u4"]
 
-[ext_resource type="Script" path="res://CatsFly.gd" id="1_g4ox2"]
-[ext_resource type="Script" path="res://EndPositionManager.gd" id="2_12wps"]
-[ext_resource type="Script" path="res://EndPosition.gd" id="2_mhvdj"]
+[ext_resource type="Script" path="res://Scripts/CatsFly.gd" id="1_g4ox2"]
+[ext_resource type="Script" path="res://Scripts/PointManager.gd" id="2_12wps"]
+[ext_resource type="Script" path="res://Scripts/EndPosition.gd" id="2_mhvdj"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_nkdll"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_vae0x"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="5_vchvh"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_5jhap"]
+[ext_resource type="Texture2D" uid="uid://kx17d2a8qxgb" path="res://Textures/CatHead.png" id="6_wqaap"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="7_ejrm0"]
+[ext_resource type="Texture2D" uid="uid://bv5abp4u8vlpo" path="res://Textures/CatBody.png" id="8_k74d7"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="9_x1v8y"]
+[ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="10_wq850"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmg5y"]
+size = Vector2(48, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fd6hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wqaap")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60hdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_k74d7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kio63"]
 size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5yun"]
-size = Vector2(1920, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmg5y"]
-size = Vector2(48, 128)
+size = Vector2(5760, 300)
 
 [node name="CatsFly" type="Node2D"]
 script = ExtResource("1_g4ox2")
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("soundManager", "characterManager", "pointManager")]
+script = ExtResource("6_5jhap")
+soundManager = NodePath("../SoundManagerNode2D")
+characterManager = NodePath("../CharacteManager")
+pointManager = NodePath("../PointManager")
+
+[node name="PointManager" type="Node2D" parent="." node_paths=PackedStringArray("endPoint", "startPoint")]
+script = ExtResource("2_12wps")
+endPoint = NodePath("EndPosition")
+startPoint = NodePath("StartPosition")
+
+[node name="StartPosition" type="Node2D" parent="PointManager"]
+position = Vector2(250, 1900)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="PointManager/StartPosition"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 0.74902, 0, 1)
+
+[node name="EndPosition" type="Area2D" parent="PointManager"]
+position = Vector2(5400, 1920)
+script = ExtResource("2_mhvdj")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="PointManager/EndPosition"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.976471, 0.698039, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointManager/EndPosition"]
+shape = SubResource("RectangleShape2D_qmg5y")
+disabled = true
+
+[node name="CharacteManager" type="Node2D" parent="." node_paths=PackedStringArray("char1AnimatedSprite", "char1CollisionShape2D", "char2AnimatedSprite", "char2CollisionShape2D", "char1", "char2", "charBoth", "camera")]
+script = ExtResource("3_nkdll")
+char1AnimatedSprite = NodePath("CharacterBoth/Character1/Character1AnimatedSprite2D")
+char1CollisionShape2D = NodePath("CharacterBoth/Character1/Character1CollisionPolygon2D")
+char2AnimatedSprite = NodePath("CharacterBoth/Character1/Character1AnimatedSprite2D")
+char2CollisionShape2D = NodePath("CharacterBoth/Character2/Character2CollisionPolygon2D")
+char1 = NodePath("CharacterBoth/Character1")
+char2 = NodePath("CharacterBoth/Character2")
+charBoth = NodePath("CharacterBoth")
+camera = NodePath("Camera2D")
+
+[node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
+script = ExtResource("4_vae0x")
+
+[node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
+position = Vector2(2, 3)
+script = ExtResource("5_vchvh")
+
+[node name="Character1AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character1"]
+sprite_frames = SubResource("SpriteFrames_fd6hm")
+
+[node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
+polygon = PackedVector2Array(-17, -31, -17, -27, -18, -26, -18, -16, -16, -14, -18, -11, -18, -6, -8, 3, 7, 3, 17, -7, 17, -10, 16, -13, 15, -14, 15, -18, 16, -18, 16, -23, 15, -24, 15, -27, 14, -28, 14, -30, 13, -31, 8, -31, -1, -24, -11, -32, -15, -32)
+
+[node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
+script = ExtResource("7_ejrm0")
+
+[node name="Character2AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character2"]
+sprite_frames = SubResource("SpriteFrames_60hdn")
+
+[node name="Character2CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character2"]
+polygon = PackedVector2Array(-10, -1, -10, 1, -15, 10, -15, 21, -9, 26, 7, 26, 14, 22, 14, 10, 9, 0, -5, 0, -5, -1)
+
+[node name="Camera2D" type="Camera2D" parent="CharacteManager"]
+
+[node name="SoundManagerNode2D" type="Node2D" parent="."]
+script = ExtResource("9_x1v8y")
+music = Array[Resource]([ExtResource("10_wq850")])
+
+[node name="MusicNode2D" type="Node2D" parent="SoundManagerNode2D"]
+
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="SoundManagerNode2D/MusicNode2D"]
+
+[node name="EffectNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
 [node name="Blocks" type="Node2D" parent="."]
 
@@ -38,10 +166,10 @@ grow_vertical = 2
 shape = SubResource("RectangleShape2D_kio63")
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(960, 1024)
+position = Vector2(2880, 1120)
 shape = SubResource("RectangleShape2D_m5yun")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -50,53 +178,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 974.0
-offset_right = 1920.0
-offset_bottom = 1074.0
+offset_right = 5760.0
+offset_bottom = 1274.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PointManager" type="Node" parent="." node_paths=PackedStringArray("endPointsTemplate", "startPositon")]
-script = ExtResource("2_12wps")
-endPointsTemplate = NodePath("EndPosition")
-startPositon = NodePath("StartPosition")
-
-[node name="StartPosition" type="Node2D" parent="PointManager"]
-position = Vector2(100, 900)
-metadata/_edit_group_ = true
-
-[node name="ColorRect" type="ColorRect" parent="PointManager/StartPosition"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.188235, 0.74902, 0, 1)
-
-[node name="EndPosition" type="Area2D" parent="PointManager"]
-position = Vector2(1744, 911)
-script = ExtResource("2_mhvdj")
-metadata/_edit_group_ = true
-
-[node name="ColorRect" type="ColorRect" parent="PointManager/EndPosition"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -64.0
-offset_right = 24.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.976471, 0.698039, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PointManager/EndPosition"]
-shape = SubResource("RectangleShape2D_qmg5y")
-disabled = true

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwc6onjfs707o"]
+
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_2p0x8"]
+[ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_wgah6"]
+
+[node name="SoundManagerNode2D" type="Node2D"]
+script = ExtResource("1_2p0x8")
+music = Array[Resource]([ExtResource("2_wgah6")])
+
+[node name="MusicNode2D" type="Node2D" parent="."]
+
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="MusicNode2D"]
+
+[node name="EffectNode2D" type="Node2D" parent="."]
