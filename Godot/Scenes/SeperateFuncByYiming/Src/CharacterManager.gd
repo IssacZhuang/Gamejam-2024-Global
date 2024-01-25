@@ -25,6 +25,8 @@ extends Node2D
 @export var max_zoom = 5
 @export var margin = Vector2(400, 200)
 
+# signal for seperating the character
+signal separate
 
 var is_separated: bool = false
 @onready var screen_size = get_viewport().get_visible_rect().size
@@ -34,6 +36,9 @@ var is_separated: bool = false
 func _ready():
     # move the characters attributes to charBoth node
     merge_charactors()
+    separate.connect(char1.on_separate)
+    separate.connect(char2.on_separate)
+    separate.connect(charBoth.on_separate)
     return
 
 
@@ -45,6 +50,7 @@ func _process(delta):
     # trigger by input
     if Input.is_action_just_pressed("player_power_separate"):
         on_separate_charactors()
+        
         
     test_move_charactor("RigidBody2D")
     return
@@ -120,7 +126,8 @@ func on_separate_charactors():
             separate_charactors_logic("RigidBody2D")
         else:
             print("Error: The type of the character is not CharacterBody2D or RigidBody2D")
-        trigger_separate_charactors()
+        # trigger seperage signal
+        separate.emit()
     return
 
 """
@@ -190,7 +197,6 @@ func merge_charactors():
     """
     change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
     change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
-    trigger_separate_charactors()
     return
 
 func separate_charactors():
@@ -270,26 +276,6 @@ func check_type(node: Node2D, type: String):
             bool: True if the node is the type, False if not
     """
     return node.get_class() == type
-
-func trigger_separate_charactors():
-    """
-        Behavior:
-            Trigger the character separation
-        Args:
-            None
-        Returns:
-            None
-    """
-    if is_separated:
-        # set the trigger for the character separation
-        charBoth.is_active = false
-        char1.is_active = true
-        char2.is_active = true
-    else:
-        charBoth.is_active = true
-        char1.is_active = false
-        char2.is_active = false
-    return
 
 """
 --------------------------------------------------
