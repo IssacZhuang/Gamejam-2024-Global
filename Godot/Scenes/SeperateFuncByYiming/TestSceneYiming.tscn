@@ -94,7 +94,6 @@ offset_bottom = -138.0
 text = "separate"
 
 [node name="Wall" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(4, 530)
 scale = Vector2(97.48, 1)
 

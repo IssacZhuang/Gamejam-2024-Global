@@ -6,7 +6,7 @@ extends Node
 var is_game_start = false
 
 var endPointsPositons: Array[Array]
-var startPositon = Vector2(250, 1900)
+var startPositon = Vector2(250, 1600)
 
 var endPointsList: Array[Node2D]
 
@@ -17,11 +17,12 @@ func _ready():
 	]
 	startPoint.position = startPositon
 	for endPointPositon in endPointsPositons:
-		endPoint.position = Vector2(endPointPositon[0], endPointPositon[1])
-		endPoint.endpointType = endPointPositon[2]
-		endPoint.is_active = true
-		endPointsList.append(endPoint)
-		add_child(endPoint)
+		var point = EndPosition.new()
+		point.position = Vector2(endPointPositon[0], endPointPositon[1])
+		point.endpointType = endPointPositon[2]
+		point.is_active = true
+		endPointsList.append(point)
+		add_child(point)
 
 func _process(delta):
 	pass

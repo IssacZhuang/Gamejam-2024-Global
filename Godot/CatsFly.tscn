@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmg5y"]
 size = Vector2(48, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fd6hm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_awp77"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -27,7 +27,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_60hdn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilja2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -47,6 +47,8 @@ size = Vector2(5760, 300)
 [node name="CatsFly" type="Node2D"]
 script = ExtResource("1_g4ox2")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("soundManager", "characterManager", "pointManager")]
 script = ExtResource("6_5jhap")
 soundManager = NodePath("../SoundManagerNode2D")
@@ -59,7 +61,7 @@ endPoint = NodePath("EndPosition")
 startPoint = NodePath("StartPosition")
 
 [node name="StartPosition" type="Node2D" parent="PointManager"]
-position = Vector2(250, 1900)
+position = Vector2(250, 1600)
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="PointManager/StartPosition"]
@@ -103,12 +105,14 @@ disabled = true
 script = ExtResource("3_nkdll")
 char1AnimatedSprite = NodePath("CharacterBoth/Character1/Character1AnimatedSprite2D")
 char1CollisionShape2D = NodePath("CharacterBoth/Character1/Character1CollisionPolygon2D")
-char2AnimatedSprite = NodePath("CharacterBoth/Character1/Character1AnimatedSprite2D")
+char2AnimatedSprite = NodePath("CharacterBoth/Character2/Character2AnimatedSprite2D")
 char2CollisionShape2D = NodePath("CharacterBoth/Character2/Character2CollisionPolygon2D")
 char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
-camera = NodePath("Camera2D")
+camera = NodePath("../Camera2D")
+move_speed = 10
+zoom_speed = 10
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
 script = ExtResource("4_vae0x")
@@ -118,7 +122,7 @@ position = Vector2(2, 3)
 script = ExtResource("5_vchvh")
 
 [node name="Character1AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character1"]
-sprite_frames = SubResource("SpriteFrames_fd6hm")
+sprite_frames = SubResource("SpriteFrames_awp77")
 
 [node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
 polygon = PackedVector2Array(-17, -31, -17, -27, -18, -26, -18, -16, -16, -14, -18, -11, -18, -6, -8, 3, 7, 3, 17, -7, 17, -10, 16, -13, 15, -14, 15, -18, 16, -18, 16, -23, 15, -24, 15, -27, 14, -28, 14, -30, 13, -31, 8, -31, -1, -24, -11, -32, -15, -32)
@@ -127,12 +131,10 @@ polygon = PackedVector2Array(-17, -31, -17, -27, -18, -26, -18, -16, -16, -14, -
 script = ExtResource("7_ejrm0")
 
 [node name="Character2AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacteManager/CharacterBoth/Character2"]
-sprite_frames = SubResource("SpriteFrames_60hdn")
+sprite_frames = SubResource("SpriteFrames_ilja2")
 
 [node name="Character2CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character2"]
 polygon = PackedVector2Array(-10, -1, -10, 1, -15, 10, -15, 21, -9, 26, 7, 26, 14, 22, 14, 10, 9, 0, -5, 0, -5, -1)
-
-[node name="Camera2D" type="Camera2D" parent="CharacteManager"]
 
 [node name="SoundManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("9_x1v8y")
@@ -147,7 +149,8 @@ music = Array[Resource]([ExtResource("10_wq850")])
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="Blocks"]
-position = Vector2(898, 727)
+position = Vector2(92, 1629)
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Blocks/Wall"]
 anchors_preset = 8
@@ -161,6 +164,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocks/Wall"]
 shape = SubResource("RectangleShape2D_kio63")

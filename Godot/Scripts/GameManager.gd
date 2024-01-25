@@ -17,4 +17,6 @@ func _process(delta):
 		isGameStart = true
 		pointManager.start()
 		characterManager.start(pointManager.startPositon)
+	pass
+
 
