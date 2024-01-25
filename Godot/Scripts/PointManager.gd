@@ -27,7 +27,7 @@ func _ready():
 func _process(delta):
 	pass
 		
-func start():
+func on_start():
 	is_game_start = true
 	startPoint.show()
 	for ep in endPointsList:

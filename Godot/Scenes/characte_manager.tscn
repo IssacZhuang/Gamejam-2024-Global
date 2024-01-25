@@ -1,57 +1,63 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqclk087xwyek"]
+[gd_scene load_steps=9 format=3 uid="uid://dr5bn4iotml8u"]
 
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="1_wbjh4"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="2_khdgq"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="3_3vulx"]
-[ext_resource type="Texture2D" uid="uid://kx17d2a8qxgb" path="res://Textures/CatHead.png" id="4_53cnf"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="5_fuc5m"]
-[ext_resource type="Texture2D" uid="uid://bv5abp4u8vlpo" path="res://Textures/CatBody.png" id="6_smb6h"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="1_uhn2x"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="2_45npf"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="3_v7lf3"]
+[ext_resource type="Texture2D" uid="uid://kx17d2a8qxgb" path="res://Textures/CatHead.png" id="4_knddj"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="5_t3ix6"]
+[ext_resource type="Texture2D" uid="uid://bv5abp4u8vlpo" path="res://Textures/CatBody.png" id="6_enj53"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0osm2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_awp77"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_53cnf")
+"texture": ExtResource("4_knddj")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bhrbh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilja2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_smb6h")
+"texture": ExtResource("6_enj53")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="CharacteManager" type="Node2D"]
-script = ExtResource("1_wbjh4")
+[node name="CharacteManager" type="Node2D" node_paths=PackedStringArray("char1AnimatedSprite", "char1CollisionShape2D", "char2AnimatedSprite", "char2CollisionShape2D", "char1", "char2", "charBoth", "camera")]
+script = ExtResource("1_uhn2x")
+char1AnimatedSprite = NodePath("")
+char1CollisionShape2D = NodePath("")
+char2AnimatedSprite = NodePath("")
+char2CollisionShape2D = NodePath("")
+char1 = NodePath("")
+char2 = NodePath("")
+charBoth = NodePath("")
+camera = NodePath("")
 
 [node name="CharacterBoth" type="RigidBody2D" parent="."]
-script = ExtResource("2_khdgq")
+script = ExtResource("2_45npf")
 
 [node name="Character1" type="RigidBody2D" parent="CharacterBoth"]
 position = Vector2(2, 3)
-script = ExtResource("3_3vulx")
+script = ExtResource("3_v7lf3")
 
 [node name="Character1AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBoth/Character1"]
-sprite_frames = SubResource("SpriteFrames_0osm2")
+sprite_frames = SubResource("SpriteFrames_awp77")
 
 [node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBoth/Character1"]
 polygon = PackedVector2Array(-17, -31, -17, -27, -18, -26, -18, -16, -16, -14, -18, -11, -18, -6, -8, 3, 7, 3, 17, -7, 17, -10, 16, -13, 15, -14, 15, -18, 16, -18, 16, -23, 15, -24, 15, -27, 14, -28, 14, -30, 13, -31, 8, -31, -1, -24, -11, -32, -15, -32)
 
 [node name="Character2" type="RigidBody2D" parent="CharacterBoth"]
-script = ExtResource("5_fuc5m")
+script = ExtResource("5_t3ix6")
 
 [node name="Character2AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBoth/Character2"]
-sprite_frames = SubResource("SpriteFrames_bhrbh")
+sprite_frames = SubResource("SpriteFrames_ilja2")
 
 [node name="Character2CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBoth/Character2"]
 polygon = PackedVector2Array(-10, -1, -10, 1, -15, 10, -15, 21, -9, 26, 7, 26, 14, 22, 14, 10, 9, 0, -5, 0, -5, -1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
