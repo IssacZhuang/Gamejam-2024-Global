@@ -16,7 +16,18 @@ extends Node2D
 @export var char2: Node2D = null
 @export var charBoth: Node2D = null
 
+@export_group("Camera Settings")
+@export var camera: Node2D = null
+@export var move_speed = 1
+@export var zoom_speed = 1
+@export var default_zoom = 1.5
+@export var min_zoom = 0.5
+@export var max_zoom = 5
+@export var margin = Vector2(400, 200)
+
+
 var is_separated: bool = false
+@onready var screen_size = get_viewport().get_visible_rect().size
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,11 +39,62 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    # move amd zoom the camera
+    move_camera(delta)
     
     # trigger by input
     if Input.is_action_just_pressed("player_power_separate"):
         on_separate_charactors()
+        
+    test_move_charactor("RigidBody2D")
     return
+
+"""
+--------------------------------------------------
+    Process the camera
+--------------------------------------------------
+"""
+func move_camera(delta):
+    """
+        Behavior:
+            Move the camera with the characters
+                1. When the characters are separated:
+                    Move and zoom the camera with the char1 and char2
+                2. When the characters are not separated:
+                    Move the camera with the charBoth
+        Args:
+            delta (float): The elapsed time since the previous frame
+        Returns:
+            None
+    """
+    if is_separated:
+        var p  = Vector2.ZERO
+        p = char1.position + char2.position
+        p /= 2
+        camera.position = lerp(camera.position, p, move_speed * delta)
+
+        var r = Rect2(camera.position, Vector2.ONE)
+        r = r.expand(char1.position)
+        r = r.expand(char2.position)
+        r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
+        print(r)
+        var d = max(r.size.x, r.size.y)
+        var z
+        if r.size.x > r.size.y * screen_size.aspect():
+            z = clamp(screen_size.x / r.size.x, min_zoom, max_zoom)
+        else:
+            z = clamp(screen_size.y / r.size.y , min_zoom, max_zoom)
+        print(z)
+        camera.zoom = lerp(camera.zoom, Vector2.ONE * z, zoom_speed * delta)
+
+    else:
+        var p  = Vector2.ZERO
+        p = charBoth.position
+        camera.position = lerp(camera.position, p, move_speed * delta)
+
+    return
+
+
 
 """
 --------------------------------------------------
@@ -229,37 +291,52 @@ func trigger_separate_charactors():
         char2.is_active = false
     return
 
-#"""
-#--------------------------------------------------
-    #test function (moving the characters)
-#--------------------------------------------------
-#"""
-#func test_move_charactor(type: String):
-    #"""
-        #Behavior:
-            #test for moving the character, check if the characters are separated or not
-                #If the characters are separated:
-                    #Move each char1 and char2 separately 
-                #If the characters are not separated:
-                    #Move the charBoth
-        #Args:
-            #type (String): The type of the character, either CharacterBody2D or RigidBody2D
-        #Returns:
-            #None
-    #"""
-    ## assert the characters are CharacterBody2D
-    ## move the characters
-    #if is_separated:
-        #if type == "CharacterBody2D":
-            #char1.velocity.x = 10
-            #char1.move_and_slide()
-            #char2.move_and_slide()
-        #elif type == "RigidBody2D":
-            #char1.set_linear_velocity(Vector2(-10, 0))
-    #else:
-        #if type == "CharacterBody2D":
-            #charBoth.velocity.x = 10
-            #charBoth.move_and_slide()
-        #elif type == "RigidBody2D":
-            #charBoth.set_linear_velocity(Vector2(10, 0))
-    #return
+"""
+--------------------------------------------------
+    test function (moving the characters)
+--------------------------------------------------
+"""
+func test_move_charactor(type: String):
+    """
+        Behavior:
+            test for moving the character, check if the characters are separated or not
+                If the characters are separated:
+                    Move each char1 and char2 separately 
+                If the characters are not separated:
+                    Move the charBoth
+        Args:
+            type (String): The type of the character, either CharacterBody2D or RigidBody2D
+        Returns:
+            None
+    """
+    # assert the characters are CharacterBody2D
+    # move the characters
+    if is_separated:
+        if type == "CharacterBody2D":
+            char1.velocity.x = 10
+            #char1.velocity.y = -10
+            char2.velocity.x = 10
+            #char2.velocity.y = 10
+            char1.move_and_slide()
+            char2.move_and_slide()
+        elif type == "RigidBody2D":
+            char1.set_linear_velocity(Vector2(-60, 10))
+            char2.set_linear_velocity(Vector2(80, -80))
+    else:
+        if type == "CharacterBody2D":
+            charBoth.velocity.x = 10
+            charBoth.move_and_slide()
+        elif type == "RigidBody2D":
+            charBoth.set_linear_velocity(Vector2(0, 0))
+    
+    # queue_redraw()
+    return
+
+# debug
+# func _draw():
+#     # draw position of the characters
+#     if is_separated:
+#         draw_circle(char1.position, 10, Color(1, 0, 0))
+#         draw_circle(char2.position, 10, Color(1, 0, 0))
+#     else:
+#         draw_circle(charBoth.position, 10, Color(1, 0, 0))
