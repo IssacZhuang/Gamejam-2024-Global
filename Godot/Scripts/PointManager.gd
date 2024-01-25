@@ -6,7 +6,7 @@ extends Node
 var is_game_start = false
 
 var endPointsPositons: Array[Array]
-var startPositon = Vector2(250, 1900)
+var startPositon = Vector2(250, 1600)
 
 var endPointsList: Array[Node2D]
 
