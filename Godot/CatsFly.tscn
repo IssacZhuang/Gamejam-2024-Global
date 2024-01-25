@@ -111,8 +111,6 @@ char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
 camera = NodePath("../Camera2D")
-move_speed = 10
-zoom_speed = 10
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
 script = ExtResource("4_vae0x")
