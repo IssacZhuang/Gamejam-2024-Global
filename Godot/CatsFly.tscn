@@ -59,7 +59,7 @@ endPoint = NodePath("EndPosition")
 startPoint = NodePath("StartPosition")
 
 [node name="StartPosition" type="Node2D" parent="PointManager"]
-position = Vector2(250, 1900)
+position = Vector2(250, 1600)
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="PointManager/StartPosition"]
@@ -147,7 +147,8 @@ music = Array[Resource]([ExtResource("10_wq850")])
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="Wall" type="StaticBody2D" parent="Blocks"]
-position = Vector2(898, 727)
+position = Vector2(92, 1629)
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Blocks/Wall"]
 anchors_preset = 8
@@ -161,6 +162,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocks/Wall"]
 shape = SubResource("RectangleShape2D_kio63")
