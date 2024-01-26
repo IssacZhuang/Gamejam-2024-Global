@@ -29,7 +29,7 @@ func _integrate_forces(state):
 	if Input.is_action_just_pressed("player_power_down"):
 		print("player_power_down")
 		#state.apply_force(thrust.rotated(rotation))
-		state.apply_impulse(thrust.rotated(rotation))
+		state.apply_impulse(thrust.rotated(rotation+1.57))
 	else:
 		state.apply_force(Vector2())
 	var rotation_direction = 0
