@@ -13,21 +13,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	clean_finished_effect()
+	# clean_finished_effect()
+	pass
 
 func trigger_effect_by_name(node_name):
 	# node: node to spawn effect
 	# check if node exist in cache
 	var node = null
+	var new_node = null
 	if cached_effect_node.has(node_name):
 		node = cached_effect_node[node_name]
-		if node.has_method("Emit"):
-			node.Emit()
+		if node.has_method("EmitOnce"):
+			new_node = node.duplicate()
+			new_node.global_position = node.global_position
+			new_node.global_rotation = node.global_rotation
+			new_node.global_scale = node.global_scale
+			new_node.global_skew = node.global_skew
+			self.add_child(new_node)
+			new_node.EmitOnce()
 		else:
 			print("Node must have Emit function")
 	else:
 		print("Node not in cache")
-		return 
+		return
 
 
 func trigger_effect_once(target_position: Vector2, target_rotation: float, target_scale: Vector2, target_skew: float, effect_name: String):
