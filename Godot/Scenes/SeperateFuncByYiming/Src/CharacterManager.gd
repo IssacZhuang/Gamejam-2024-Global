@@ -35,19 +35,14 @@ var is_separated: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# move the characters attributes to charBoth node
-	
-	#hide()
 	merge_charactors()
 	separate.connect(char1.on_separate)
 	separate.connect(char2.on_separate)
 	separate.connect(charBoth.on_separate)
 	return
 
-func start(pos):
-	charBoth.position = pos
-	#char1.start()
-	#char2.start()
-	#show()
+func on_start():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
