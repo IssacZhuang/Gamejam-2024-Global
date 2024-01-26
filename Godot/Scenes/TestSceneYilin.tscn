@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="5_lfg7l"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="7_k6dpy"]
-[ext_resource type="Texture2D" uid="uid://caqk2vr1a6ixy" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
+[ext_resource type="Texture2D" uid="uid://h51me6ijfd88" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
 [ext_resource type="Shader" path="res://Scenes/sky.gdshader" id="9_gpder"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]

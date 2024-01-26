@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cctgoj0y3ty73"]
+[gd_scene load_steps=14 format=3 uid="uid://cctgoj0y3ty73"]
 
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/EffectManager.gd" id="1_cuj3j"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_x2heq"]
 [ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_s12qr"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_mlq8l"]
@@ -7,7 +8,8 @@
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="5_pukxa"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="7_i2ufo"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="7_u5xfn"]
-[ext_resource type="Texture2D" uid="uid://caqk2vr1a6ixy" path="res://Textures/Cat/PlayerRotation.png" id="9_5p1ep"]
+[ext_resource type="PackedScene" uid="uid://bt0qthkqwttwe" path="res://Effect/Explosion1.tscn" id="8_ux7tq"]
+[ext_resource type="Texture2D" uid="uid://h51me6ijfd88" path="res://Textures/Cat/PlayerRotation.png" id="9_5p1ep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]
 
@@ -18,6 +20,11 @@ size = Vector2(0.430855, 1041)
 size = Vector2(0.34879, 1045)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EffectManagerNode2D" type="Node2D" parent="."]
+script = ExtResource("1_cuj3j")
 
 [node name="SoundManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("1_x2heq")
@@ -34,8 +41,7 @@ script = ExtResource("3_mlq8l")
 char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
-camera = NodePath("Camera2D")
-move_speed = 100
+camera = NodePath("../Camera2D")
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
 gravity_scale = 0.5
@@ -44,7 +50,6 @@ script = ExtResource("4_tp4gg")
 torque = 40000
 
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
-position = Vector2(2, 3)
 script = ExtResource("7_u5xfn")
 
 [node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
@@ -55,6 +60,9 @@ polygon = PackedVector2Array(-3, -1, 62, -16, 85, -26, 97, -20, 112, -30, 123, -
 position = Vector2(0.800003, 0)
 scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("7_i2ufo")
+
+[node name="Explosion1" parent="CharacteManager/CharacterBoth/Character1" instance=ExtResource("8_ux7tq")]
+position = Vector2(-83, 30)
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 script = ExtResource("5_pukxa")
@@ -68,14 +76,19 @@ position = Vector2(-21, -31)
 scale = Vector2(0.200684, 0.200684)
 texture = ExtResource("9_5p1ep")
 
-[node name="Camera2D" type="Camera2D" parent="CharacteManager"]
-
 [node name="Button" type="Button" parent="."]
 offset_left = 391.0
 offset_top = -169.0
 offset_right = 467.0
 offset_bottom = -138.0
 text = "separate"
+
+[node name="EffectButton" type="Button" parent="."]
+offset_left = 498.0
+offset_top = -160.0
+offset_right = 506.0
+offset_bottom = -152.0
+text = "Effect"
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(4, 530)
@@ -101,3 +114,5 @@ shape = SubResource("RectangleShape2D_stklk")
 
 [connection signal="pressed" from="Button" to="CharacteManager" method="on_separate_charactors"]
 [connection signal="pressed" from="Button" to="SoundManagerNode2D" method="play_music" binds= ["SampleBgm"]]
+[connection signal="pressed" from="EffectButton" to="EffectManagerNode2D" method="trigger_effect_once" binds= [Vector2(0, 0), 0.0, Vector2(0, 0), 0.0, "Explosion1"]]
+[connection signal="pressed" from="EffectButton" to="EffectManagerNode2D" method="trigger_effect_by_name" binds= ["Explosion1"]]

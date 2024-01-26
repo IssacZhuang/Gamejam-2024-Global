@@ -38,7 +38,7 @@ var is_separated: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	initializeCamera()
+	#initializeCamera()
 	scan_char_attribute()
 	# move the characters attributes to charBoth node
 	merge_charactors()
@@ -105,8 +105,7 @@ func move_camera(delta):
 	else:
 		var p  = Vector2.ZERO
 		p = charBoth.position
-		camera.position = p
-
+		camera.position = lerp(camera.position, p, move_speed)
 	return
 
 
