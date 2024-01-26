@@ -156,15 +156,18 @@ func separate_charactors_logic(type: String):
 	var v = Vector2()
 	var v_a = Vector2()
 	var p = Vector2()
+	var r = 0
 
 	# get the velocity and position
 	if type == "CharacterBody2D":
 		v = charBoth.velocity
 		p = charBoth.position
+		r = charBoth.rotation
 	elif type == "RigidBody2D":
 		v = charBoth.get_linear_velocity()
 		v_a = charBoth.get_angular_velocity()
 		p = charBoth.get_position()
+		r = charBoth.get_rotation()
 	
 	# separate the characters
 	separate_charactors()
@@ -180,6 +183,8 @@ func separate_charactors_logic(type: String):
 		char2.velocity = v
 		char1.position = p
 		char2.position = p
+		char1.rotation = r
+		char2.rotation = r
 	elif type == "RigidBody2D":
 		char1.set_linear_velocity(v)
 		char2.set_linear_velocity(v)
@@ -187,6 +192,8 @@ func separate_charactors_logic(type: String):
 		char2.set_angular_velocity(v_a)
 		char1.set_position(p)
 		char2.set_position(p)
+		char1.set_rotation(r)
+		char2.set_rotation(r)
 	return
 
 """
