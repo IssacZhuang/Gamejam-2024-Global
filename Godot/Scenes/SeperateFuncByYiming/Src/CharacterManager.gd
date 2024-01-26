@@ -88,7 +88,7 @@ func move_camera(delta):
 		var p  = Vector2.ZERO
 		p = char1.position + char2.position
 		p /= 2
-		camera.position = lerp(camera.position, p, move_speed)
+		camera.position = lerp(camera.position, p, move_speed * delta)
 
 		var r = Rect2(camera.position, Vector2.ONE)
 		r = r.expand(char1.position)
@@ -100,16 +100,12 @@ func move_camera(delta):
 			z = clamp(screen_size.x / r.size.x, min_zoom, max_zoom)
 		else:
 			z = clamp(screen_size.y / r.size.y , min_zoom, max_zoom)
-		camera.zoom = lerp(camera.zoom, Vector2.ONE * z, zoom_speed)
+		camera.zoom = lerp(camera.zoom, Vector2.ONE * z, zoom_speed * delta)
 
 	else:
 		var p  = Vector2.ZERO
 		p = charBoth.position
-<<<<<<< HEAD
-		camera.position = lerp(camera.position, p, move_speed)
-=======
 		camera.position = p
->>>>>>> 75b2e665b68f622593e010af4a0975c4a9c2998f
 
 	return
 

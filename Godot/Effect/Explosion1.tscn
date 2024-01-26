@@ -105,6 +105,7 @@ script = ExtResource("1_rwmi7")
 
 [node name="Spark" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_13343")
+emitting = false
 amount = 55
 process_material = SubResource("ParticleProcessMaterial_t062n")
 texture = ExtResource("1_uodfl")
@@ -119,6 +120,7 @@ emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_axqme")
 texture = ExtResource("1_2u2aa")
+lifetime = 0.7
 one_shot = true
 
 [node name="Bloom" type="GPUParticles2D" parent="."]
