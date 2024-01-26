@@ -3,13 +3,13 @@ extends Node2D
 # export array of AnimatedSprite2D, one for each character
 @export_group("Characters Settings")
 
-@export_subgroup("Character1Attributes")
-@export var char1AnimatedSprite: AnimatedSprite2D = null
-@export var char1CollisionShape2D: CollisionPolygon2D = null
+# @export_subgroup("Character1Attributes")
+# @export var char1AnimatedSprite: AnimatedSprite2D = null
+# @export var char1CollisionShape2D: CollisionPolygon2D = null
 
-@export_subgroup("Character2Attributes")
-@export var char2AnimatedSprite: AnimatedSprite2D = null
-@export var char2CollisionShape2D: CollisionPolygon2D = null
+# @export_subgroup("Character2Attributes")
+# @export var char2AnimatedSprite: AnimatedSprite2D = null
+# @export var char2CollisionShape2D: CollisionPolygon2D = null
 
 @export_subgroup("CharacterNodes")
 @export var char1: Node2D = null
@@ -25,6 +25,9 @@ extends Node2D
 @export var max_zoom = 5
 @export var margin = Vector2(400, 200)
 
+var char1_attributes: Array = []
+var char2_attributes: Array = []
+
 # signal for seperating the character
 signal separate
 
@@ -34,6 +37,7 @@ var is_separated: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	scan_char_attribute()
 	# move the characters attributes to charBoth node
 	merge_charactors()
 	separate.connect(char1.on_separate)
@@ -85,14 +89,12 @@ func move_camera(delta):
 		r = r.expand(char1.position)
 		r = r.expand(char2.position)
 		r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
-		print(r)
 		var d = max(r.size.x, r.size.y)
 		var z
 		if r.size.x > r.size.y * screen_size.aspect():
 			z = clamp(screen_size.x / r.size.x, min_zoom, max_zoom)
 		else:
 			z = clamp(screen_size.y / r.size.y , min_zoom, max_zoom)
-		print(z)
 		camera.zoom = lerp(camera.zoom, Vector2.ONE * z, zoom_speed * delta)
 
 	else:
@@ -197,8 +199,13 @@ func merge_charactors():
 		Returns:
 			None
 	"""
-	change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
-	change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
+	# change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
+	# change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
+	# move all the children of char1 and char2 to charBoth
+	for child in char1_attributes:
+		change_parent(child, charBoth)
+	for child in char2_attributes:
+		change_parent(child, charBoth)
 	return
 
 func separate_charactors():
@@ -210,8 +217,14 @@ func separate_charactors():
 		Returns:
 			None
 	"""
-	change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, char1)
-	change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, char2)
+	# change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, char1)
+	# change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, char2)
+	for child in charBoth.get_children():
+		# if node in char1_attributes or node in char2_attributes, change the parent to char1 or char2
+		if child in char1_attributes:
+			change_parent(child, char1)
+		if child in char2_attributes:
+			change_parent(child, char2)
 	return
 
 func change_char_attribute_parent(charAnimation: AnimatedSprite2D, charCollisionShape: CollisionPolygon2D, targetParent: Node2D):
@@ -278,6 +291,22 @@ func check_type(node: Node2D, type: String):
 			bool: True if the node is the type, False if not
 	"""
 	return node.get_class() == type
+
+func scan_char_attribute():
+	"""
+		Behavior:
+			Scan each characters' attributes, save in the array
+		Args:
+			None
+		Returns:
+			None
+	"""
+	# scan all the children of char1 and char2
+	for child in char1.get_children():
+		char1_attributes.append(child)
+	for child in char2.get_children():
+		char2_attributes.append(child)
+	return
 
 """
 --------------------------------------------------

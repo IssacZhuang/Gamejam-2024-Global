@@ -51,12 +51,8 @@ music = Array[Resource]([ExtResource("2_s12qr")])
 
 [node name="EffectNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
-[node name="CharacteManager" type="Node2D" parent="." node_paths=PackedStringArray("char1AnimatedSprite", "char1CollisionShape2D", "char2AnimatedSprite", "char2CollisionShape2D", "char1", "char2", "charBoth", "camera")]
+[node name="CharacteManager" type="Node2D" parent="." node_paths=PackedStringArray("char1", "char2", "charBoth", "camera")]
 script = ExtResource("3_mlq8l")
-char1AnimatedSprite = NodePath("CharacterBoth/Character1/Character1AnimatedSprite2D")
-char1CollisionShape2D = NodePath("CharacterBoth/Character1/Character1CollisionPolygon2D")
-char2AnimatedSprite = NodePath("CharacterBoth/Character2/Character2AnimatedSprite2D")
-char2CollisionShape2D = NodePath("CharacterBoth/Character2/Character2CollisionPolygon2D")
 char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
