@@ -35,8 +35,10 @@ var is_separated: bool = false
 @onready var screen_size = get_viewport().get_visible_rect().size
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	initializeCamera()
 	scan_char_attribute()
 	# move the characters attributes to charBoth node
 	merge_charactors()
@@ -66,6 +68,9 @@ func _process(delta):
 	Process the camera
 --------------------------------------------------
 """
+func initializeCamera():
+	camera.position = charBoth.position
+	
 func move_camera(delta):
 	"""
 		Behavior:
@@ -100,7 +105,7 @@ func move_camera(delta):
 	else:
 		var p  = Vector2.ZERO
 		p = charBoth.position
-		camera.position = lerp(camera.position, p, move_speed * delta)
+		camera.position = p
 
 	return
 
