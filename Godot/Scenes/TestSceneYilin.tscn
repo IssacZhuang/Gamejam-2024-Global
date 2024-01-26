@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cednalr1i1m6"]
+[gd_scene load_steps=16 format=3 uid="uid://cednalr1i1m6"]
 
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
 [ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_c4tcq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="7_k6dpy"]
 [ext_resource type="Texture2D" uid="uid://caqk2vr1a6ixy" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
+[ext_resource type="Shader" path="res://Scenes/sky.gdshader" id="9_gpder"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]
 
@@ -15,9 +16,20 @@
 size = Vector2(0.430855, 1041)
 
 [sub_resource type="Gradient" id="Gradient_fgn6i"]
+colors = PackedColorArray(0.105882, 0.368627, 0.831373, 1, 0.933333, 0.513726, 0.192157, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jgkvg"]
 gradient = SubResource("Gradient_fgn6i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0r103"]
+shader = ExtResource("9_gpder")
+shader_parameter/top_color = Vector3(0.2, 0.38, 0.89)
+shader_parameter/top_color2 = Vector3(0, 0.92, 0.795)
+shader_parameter/bottom_color = Vector3(0.635, 0.385, 0.415)
+shader_parameter/bottom_color2 = Vector3(0.995, 0.945, 0.68)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h3do8"]
+size = Vector2(5, 5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -37,14 +49,13 @@ char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
 camera = NodePath("Camera2D")
-move_speed = 100
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
 gravity_scale = 0.5
 center_of_mass_mode = 1
 script = ExtResource("4_icukb")
 torque = 40000
-initial_force = Vector2(4000, -6000)
+initial_force = Vector2(1000, -1200)
 
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(2, 3)
@@ -103,10 +114,19 @@ shape = SubResource("RectangleShape2D_xbgvr")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+visible = false
 z_index = -999
-position = Vector2(2601, -3044)
-scale = Vector2(112.48, 112.48)
+position = Vector2(23336, -8979.67)
+rotation = 1.5708
+scale = Vector2(297.412, 736.23)
 texture = SubResource("GradientTexture2D_jgkvg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_0r103")
+position = Vector2(7487.2, -2802.71)
+scale = Vector2(3082.32, 1129.49)
+texture = SubResource("PlaceholderTexture2D_h3do8")
 
 [connection signal="pressed" from="Button" to="CharacteManager" method="on_separate_charactors"]
 [connection signal="pressed" from="Button" to="SoundManagerNode2D" method="play_music" binds= ["SampleBgm"]]
