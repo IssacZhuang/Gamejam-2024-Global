@@ -18,11 +18,11 @@ extends Node2D
 
 @export_group("Camera Settings")
 @export var camera: Node2D = null
-@export var move_speed = 1
-@export var zoom_speed = 1
+@export var move_speed = 1.0
+@export var zoom_speed = 1.0
 @export var default_zoom = 1.5
 @export var min_zoom = 0.5
-@export var max_zoom = 5
+@export var max_zoom = 1.5
 @export var margin = Vector2(400, 200)
 
 var char1_attributes: Array = []
