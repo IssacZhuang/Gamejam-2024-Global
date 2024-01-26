@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://cednalr1i1m6"]
+
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
+[ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_c4tcq"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_f20hd"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_icukb"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="5_lfg7l"]
+[ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="7_k6dpy"]
+[ext_resource type="Texture2D" uid="uid://caqk2vr1a6ixy" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbgvr"]
+size = Vector2(0.430855, 1041)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stklk"]
+size = Vector2(0.34879, 1045)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SoundManagerNode2D" type="Node2D" parent="."]
+script = ExtResource("1_giy5v")
+music = Array[Resource]([ExtResource("2_c4tcq")])
+
+[node name="MusicNode2D" type="Node2D" parent="SoundManagerNode2D"]
+
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="SoundManagerNode2D/MusicNode2D"]
+
+[node name="EffectNode2D" type="Node2D" parent="SoundManagerNode2D"]
+
+[node name="CharacteManager" type="Node2D" parent="." node_paths=PackedStringArray("char1", "char2", "charBoth", "camera")]
+script = ExtResource("3_f20hd")
+char1 = NodePath("CharacterBoth/Character1")
+char2 = NodePath("CharacterBoth/Character2")
+charBoth = NodePath("CharacterBoth")
+camera = NodePath("Camera2D")
+move_speed = 100
+
+[node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
+gravity_scale = 0.5
+center_of_mass_mode = 1
+script = ExtResource("4_icukb")
+torque = 40000
+
+[node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
+position = Vector2(2, 3)
+center_of_mass_mode = 1
+script = ExtResource("5_lfg7l")
+
+[node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
+position = Vector2(-136.2, 23)
+polygon = PackedVector2Array(-3, -1, 62, -16, 85, -26, 97, -20, 112, -30, 123, -24, 186, -37, 200, -46, 200, -69, 224, -60, 247, -70, 246, -24, 253, -19, 237, -10, 216, -8, 180, 7, 90, 12, 59, 10, 45, 16, 36, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacteManager/CharacterBoth/Character1"]
+position = Vector2(0.800003, 0)
+scale = Vector2(0.200001, 0.200001)
+texture = ExtResource("6_twwcx")
+
+[node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
+center_of_mass_mode = 1
+script = ExtResource("7_k6dpy")
+
+[node name="Character2CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character2"]
+position = Vector2(-208, 0)
+polygon = PackedVector2Array(175, -25, 180, -36, 139, -27, 146, -63, 239, -56, 233, -1, 206, 1, 170, 14, 160, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacteManager/CharacterBoth/Character2"]
+position = Vector2(-21, -31)
+scale = Vector2(0.200684, 0.200684)
+texture = ExtResource("8_yg3fl")
+
+[node name="Camera2D" type="Camera2D" parent="CharacteManager"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 391.0
+offset_top = -169.0
+offset_right = 467.0
+offset_bottom = -138.0
+text = "separate"
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(4, 530)
+scale = Vector2(97.48, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+
+[node name="Wall1" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-0.0102587, 14)
+shape = SubResource("RectangleShape2D_bor5m")
+
+[node name="Wall2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-0.0512934, -1064)
+shape = SubResource("RectangleShape2D_bor5m")
+
+[node name="Wall3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-9.82766, -528)
+shape = SubResource("RectangleShape2D_xbgvr")
+
+[node name="Wall4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(9.68404, -532.5)
+shape = SubResource("RectangleShape2D_stklk")
+
+[connection signal="pressed" from="Button" to="CharacteManager" method="on_separate_charactors"]
+[connection signal="pressed" from="Button" to="SoundManagerNode2D" method="play_music" binds= ["SampleBgm"]]
