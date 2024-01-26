@@ -5,16 +5,21 @@ var is_active = true
 @export_group("Characters Physics Settings")
 @export var thrust: Vector2 = Vector2(0, -400)
 @export var torque = 700
-
+@export var initial_force: Vector2 = Vector2(3000, -4000)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_active = true
 	#sleeping = true
+	shoot()
+
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func shoot():
+	apply_impulse(initial_force)
 	
 func _integrate_forces(state):
 	"""
