@@ -8,6 +8,9 @@ size = Vector2(48, 128)
 [node name="EndPosition" type="Area2D"]
 position = Vector2(5400, 1920)
 script = ExtResource("1_ouvk8")
+endpointType = null
+is_active = null
+is_done = null
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
