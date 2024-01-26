@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://cctgoj0y3ty73"]
+[gd_scene load_steps=14 format=3 uid="uid://cctgoj0y3ty73"]
 
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/EffectManager.gd" id="1_gy4v8"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_x2heq"]
 [ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_s12qr"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_mlq8l"]
@@ -41,9 +40,6 @@ size = Vector2(0.430855, 1041)
 size = Vector2(0.34879, 1045)
 
 [node name="Node2D" type="Node2D"]
-
-[node name="EffectManagerNode2D" type="Node2D" parent="."]
-script = ExtResource("1_gy4v8")
 
 [node name="SoundManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("1_x2heq")
