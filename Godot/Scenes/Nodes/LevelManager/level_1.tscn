@@ -71,13 +71,13 @@ scale = Vector2(5, 5)
 [node name="StoneWalls" type="Node2D" parent="."]
 
 [node name="StoneWall" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
-position = Vector2(13901, -6340)
+position = Vector2(15437, -3172)
 
 [node name="StoneWall2" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
-position = Vector2(19199, -952)
+position = Vector2(18863, -72)
 
 [node name="StoneWall3" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
-position = Vector2(10561, -4094)
+position = Vector2(12913, -1102)
 
 [node name="WoodenWalls" type="Node2D" parent="."]
 
@@ -85,13 +85,16 @@ position = Vector2(10561, -4094)
 position = Vector2(7719, -1578)
 
 [node name="WoodenWall2" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
-position = Vector2(18261, -4398)
+position = Vector2(10533, -4526)
 
 [node name="ExplosionBuckets" type="Node2D" parent="."]
 position = Vector2(6160, -144)
 
 [node name="ExplosionBucket" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
 position = Vector2(4378, 143)
+
+[node name="ExplosionBucket2" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(11736, -5232)
 
 [node name="StartPosition" parent="." instance=ExtResource("5_4pxah")]
 position = Vector2(1147, 1600)

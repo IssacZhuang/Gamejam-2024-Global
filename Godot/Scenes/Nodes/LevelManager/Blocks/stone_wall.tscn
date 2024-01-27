@@ -5,6 +5,8 @@ size = Vector2(600, 3000)
 
 [node name="StoneWall" type="RigidBody2D"]
 position = Vector2(14835, 0)
+mass = 1e+06
+gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
