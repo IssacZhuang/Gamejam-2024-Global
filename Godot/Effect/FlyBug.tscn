@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b64tglosu8eac"]
+[gd_scene load_steps=11 format=3 uid="uid://b8w5pj5poradn"]
 
 [ext_resource type="Texture2D" uid="uid://5bxoqyrn7l2r" path="res://Textures/FlyBug/FlyBugAnim.png" id="1_2mjqu"]
 [ext_resource type="Script" path="res://Scripts/FlyBugs.gd" id="1_3h56m"]

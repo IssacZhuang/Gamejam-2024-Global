@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="2_12wps"]
 [ext_resource type="PackedScene" uid="uid://hq0mxgb6gjdk" path="res://Scenes/Nodes/LevelManager/level_1.tscn" id="2_36eqh"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="9_x1v8y"]
-[ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="10_wq850"]
+[ext_resource type="AudioStream" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="10_wq850"]
 
 [node name="CatsFly" type="Node2D"]
 script = ExtResource("1_g4ox2")

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkgfesg3ubk2c"]
+[gd_scene load_steps=3 format=3 uid="uid://dkgfesg3ubk2c"]
+
+[ext_resource type="Script" path="res://Scripts/Blocks/wooden_wall.gd" id="1_ssinf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q743r"]
 size = Vector2(600, 3000)
@@ -6,6 +8,9 @@ size = Vector2(600, 3000)
 [node name="WoodenWall" type="RigidBody2D"]
 position = Vector2(10126, -34)
 gravity_scale = 0.0
+max_contacts_reported = 6
+contact_monitor = true
+script = ExtResource("1_ssinf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q743r")
