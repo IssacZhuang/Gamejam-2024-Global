@@ -106,6 +106,8 @@ func move_camera(delta):
 		var p  = Vector2.ZERO
 		p = charBoth.position
 		camera.position = lerp(camera.position, p, move_speed)
+		# set zoom to default
+		camera.zoom = lerp(camera.zoom, Vector2.ONE * default_zoom, zoom_speed)
 	return
 
 
