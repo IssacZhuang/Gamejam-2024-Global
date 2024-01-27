@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://cff7f6xpsguo0"]
+
+[ext_resource type="Script" path="res://Scripts/Gunlance.gd" id="1_7afbe"]
+[ext_resource type="Texture2D" uid="uid://b1wxplu4hel0a" path="res://Textures/Gunlance.png" id="1_wgs4a"]
+[ext_resource type="Texture2D" uid="uid://cxkqw01cloouf" path="res://Textures/GunlanceBloom.PNG" id="2_dwexb"]
+[ext_resource type="PackedScene" uid="uid://d2ffrn23gg78p" path="res://Effect/Smoke.tscn" id="3_hp3sl"]
+[ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="4_bv5n5"]
+
+[sub_resource type="Curve" id="Curve_ugnjy"]
+_data = [Vector2(0, 0.223747), 0.0, 0.0, 0, 0, Vector2(0.117318, 0.339739), 0.0, 0.0, 0, 0, Vector2(0.236499, 0.237131), 0.0, 0.0, 0, 0, Vector2(0.378026, 0.3442), 0.0, 0.0, 0, 0, Vector2(0.49162, 0.214825), 0.0, 0.0, 0, 0, Vector2(0.621974, 0.348662), 0.0, 0.0, 0, 0, Vector2(0.72067, 0.214825), 0.0, 0.0, 0, 0, Vector2(0.851024, 0.317433), 0.0, 0.0, 0, 0, Vector2(0.994413, 0.210364), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_elnaa"]
+curve = SubResource("Curve_ugnjy")
+
+[sub_resource type="Curve" id="Curve_r1aul"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sa2a4"]
+curve = SubResource("Curve_r1aul")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1a0tk"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_sa2a4")
+color = Color(0.972549, 0.560784, 0.317647, 1)
+alpha_curve = SubResource("CurveTexture_elnaa")
+
+[node name="Gunlance" type="Node2D" node_paths=PackedStringArray("bloomEffect")]
+script = ExtResource("1_7afbe")
+bloomEffect = NodePath("Bloom")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_wgs4a")
+
+[node name="Bloom" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-350, 50)
+texture = ExtResource("2_dwexb")
+
+[node name="Smoke" parent="Bloom" instance=ExtResource("3_hp3sl")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Bloom"]
+position = Vector2(-7, -3)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_1a0tk")
+texture = ExtResource("4_bv5n5")
+lifetime = 4.0
+local_coords = true

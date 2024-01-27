@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2ffrn23gg78p"]
+
+[ext_resource type="Texture2D" uid="uid://bsqf6snt448kt" path="res://Textures/Effect/Smoke_2.png" id="1_gfe15"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2xx1s"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_d5aqa"]
+_data = [Vector2(0.0633147, 0.281743), 0.0, 0.0, 0, 0, Vector2(0.301676, 0.0676047), 0.0, 0.0, 0, 0, Vector2(1, 0.0185312), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sctwu"]
+curve = SubResource("Curve_d5aqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0wh31"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.36
+angle_min = -178.7
+angle_max = 199.1
+direction = Vector3(1, 1, 0)
+spread = 8.298
+initial_velocity_min = 460.98
+initial_velocity_max = 560.28
+gravity = Vector3(0, -980, 0)
+alpha_curve = SubResource("CurveTexture_sctwu")
+anim_speed_min = 1.0
+anim_speed_max = 2.02
+
+[node name="Smoke" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_2xx1s")
+position = Vector2(-8, -8)
+rotation = -2.26458
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_0wh31")
+texture = ExtResource("1_gfe15")
+lifetime = 2.0
+randomness = 1.0
