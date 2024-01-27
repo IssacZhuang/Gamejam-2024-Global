@@ -56,15 +56,15 @@ position = Vector2(774, 1716)
 gravity_scale = 0.5
 center_of_mass_mode = 1
 script = ExtResource("4_icukb")
-thrust = Vector2(0, -1000)
-torque = 40000
+thrust = Vector2(0, -2000)
+torque = 400000
 initial_force = Vector2(2000, -3000)
 
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(2, 3)
 center_of_mass_mode = 1
 script = ExtResource("5_lfg7l")
-thrust = Vector2(0, -1000)
+thrust = Vector2(0, -2000)
 
 [node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
 position = Vector2(-681, 117)
