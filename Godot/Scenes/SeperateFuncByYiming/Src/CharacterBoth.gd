@@ -10,6 +10,9 @@ var is_active = true
 @export var cooldown_time = 5 #冷却时间,单位秒
 var cooldown_left = 0
 var can_burst: bool
+
+signal burst
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	can_burst = true
@@ -47,6 +50,7 @@ func _integrate_forces(state):
 		#state.apply_force(thrust.rotated(rotation))
 		state.apply_impulse(thrust.rotated(rotation+1.57))
 		cooldown_left = cooldown_time
+		burst.emit()
 	else:
 		state.apply_force(Vector2())
 	var rotation_direction = 0

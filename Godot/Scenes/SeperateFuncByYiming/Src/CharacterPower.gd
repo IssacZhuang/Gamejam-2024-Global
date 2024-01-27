@@ -8,6 +8,8 @@ var is_active = false
 var cooldown_left = 0
 var can_burst: bool
 
+signal burst
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	can_burst = true
@@ -40,6 +42,7 @@ func _integrate_forces(state):
 		print("player_power_down")
 		#state.apply_force(thrust.rotated(rotation))
 		state.apply_impulse(thrust.rotated(rotation+1.57))
+		burst.emit()
 	else:
 		state.apply_force(Vector2())
 
