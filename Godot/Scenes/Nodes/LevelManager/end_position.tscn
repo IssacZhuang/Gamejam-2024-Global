@@ -8,6 +8,8 @@ size = Vector2(697.5, 908)
 
 [node name="EndPosition" type="RigidBody2D"]
 position = Vector2(5400, 1920)
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("1_ouvk8")
 metadata/_edit_group_ = true
 
