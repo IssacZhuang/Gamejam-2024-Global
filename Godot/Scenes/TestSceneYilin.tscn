@@ -1,20 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://cednalr1i1m6"]
+[gd_scene load_steps=15 format=3 uid="uid://cednalr1i1m6"]
 
 [ext_resource type="PackedScene" uid="uid://hq0mxgb6gjdk" path="res://Scenes/Nodes/LevelManager/level_1.tscn" id="1_4t6la"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
 [ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_c4tcq"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_f20hd"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_icukb"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="5_lfg7l"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterPower.gd" id="5_lfg7l"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="7_k6dpy"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterRotation.gd" id="7_k6dpy"]
 [ext_resource type="Texture2D" uid="uid://h51me6ijfd88" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
 [ext_resource type="Shader" path="res://Scenes/sky.gdshader" id="9_gpder"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbgvr"]
-size = Vector2(0.430855, 1041)
 
 [sub_resource type="Gradient" id="Gradient_fgn6i"]
 colors = PackedColorArray(0.105882, 0.368627, 0.831373, 1, 0.933333, 0.513726, 0.192157, 1)
@@ -44,25 +39,31 @@ music = Array[Resource]([ExtResource("2_c4tcq")])
 
 [node name="EffectNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="CharacteManager" type="Node2D" parent="." node_paths=PackedStringArray("char1", "char2", "charBoth", "camera")]
 script = ExtResource("3_f20hd")
 char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
-camera = NodePath("Camera2D")
+camera = NodePath("../Camera2D")
+default_zoom = 0.265
+max_zoom = 0.1
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager"]
-position = Vector2(208, 1796)
+position = Vector2(774, 1716)
 gravity_scale = 0.5
 center_of_mass_mode = 1
 script = ExtResource("4_icukb")
+thrust = Vector2(0, -1000)
 torque = 40000
-initial_force = Vector2(1000, -1200)
+initial_force = Vector2(2000, -3000)
 
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(2, 3)
 center_of_mass_mode = 1
 script = ExtResource("5_lfg7l")
+thrust = Vector2(0, -1000)
 
 [node name="Character1CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character1"]
 position = Vector2(-136.2, 23)
@@ -70,23 +71,20 @@ polygon = PackedVector2Array(-3, -1, 62, -16, 85, -26, 97, -20, 112, -30, 123, -
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacteManager/CharacterBoth/Character1"]
 position = Vector2(0.800003, 0)
-scale = Vector2(0.200001, 0.200001)
 texture = ExtResource("6_twwcx")
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 center_of_mass_mode = 1
 script = ExtResource("7_k6dpy")
+torque = 40000
 
 [node name="Character2CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacteManager/CharacterBoth/Character2"]
 position = Vector2(-208, 0)
 polygon = PackedVector2Array(175, -25, 180, -36, 139, -27, 146, -63, 239, -56, 233, -1, 206, 1, 170, 14, 160, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacteManager/CharacterBoth/Character2"]
-position = Vector2(-21, -31)
-scale = Vector2(0.200684, 0.200684)
+position = Vector2(-21, -167)
 texture = ExtResource("8_yg3fl")
-
-[node name="Camera2D" type="Camera2D" parent="CharacteManager"]
 
 [node name="Button" type="Button" parent="."]
 offset_left = 391.0
@@ -94,20 +92,6 @@ offset_top = -169.0
 offset_right = 467.0
 offset_bottom = -138.0
 text = "separate"
-
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(4, 530)
-scale = Vector2(97.48, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Wall"]
-
-[node name="Wall1" type="CollisionShape2D" parent="Wall"]
-position = Vector2(-0.0102587, 14)
-shape = SubResource("RectangleShape2D_bor5m")
-
-[node name="Wall3" type="CollisionShape2D" parent="Wall"]
-position = Vector2(-9.82766, -528)
-shape = SubResource("RectangleShape2D_xbgvr")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -126,8 +110,8 @@ texture = SubResource("GradientTexture2D_jgkvg")
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_0r103")
-position = Vector2(7716, -530)
-scale = Vector2(3082.32, 1129.49)
+position = Vector2(14308, -530)
+scale = Vector2(6000, 1140.95)
 texture = SubResource("PlaceholderTexture2D_h3do8")
 
 [node name="Level1" parent="." instance=ExtResource("1_4t6la")]
