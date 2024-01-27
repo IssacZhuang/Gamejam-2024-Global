@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://by4dpg8f75bx1"]
+[gd_scene load_steps=3 format=3 uid="uid://by4dpg8f75bx1"]
+
+[ext_resource type="Script" path="res://Scripts/Blocks/explosion_bucket.gd" id="1_3leui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ry8en"]
 radius = 600.0
@@ -7,6 +9,9 @@ height = 3000.0
 [node name="ExplosionBucket" type="RigidBody2D"]
 position = Vector2(5096, 0)
 gravity_scale = 0.0
+max_contacts_reported = 6
+contact_monitor = true
+script = ExtResource("1_3leui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ry8en")
