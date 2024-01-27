@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=11 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
+[ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
+[ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
+[ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
+[ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
+[ext_resource type="PackedScene" uid="uid://c8hbpb2fb2lru" path="res://Scenes/Nodes/LevelManager/end_position.tscn" id="6_fxcgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq72u"]
 size = Vector2(29, 2106)
@@ -20,6 +25,7 @@ script = ExtResource("1_f1vo5")
 [node name="SideLimit" type="Node2D" parent="."]
 
 [node name="LeftLimit" type="StaticBody2D" parent="SideLimit"]
+position = Vector2(20, 262)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/LeftLimit"]
 position = Vector2(9, -3278)
@@ -27,6 +33,7 @@ scale = Vector2(5, 5.4)
 shape = SubResource("RectangleShape2D_yq72u")
 
 [node name="TopLimit" type="StaticBody2D" parent="SideLimit"]
+position = Vector2(20, 262)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/TopLimit"]
 position = Vector2(14353, -9032)
@@ -34,6 +41,7 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_6etmp")
 
 [node name="RightLimit" type="StaticBody2D" parent="SideLimit"]
+position = Vector2(20, 262)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/RightLimit"]
 position = Vector2(28811, -3304)
@@ -59,3 +67,36 @@ offset_bottom = 1879.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
+
+[node name="StoneWalls" type="Node2D" parent="."]
+
+[node name="StoneWall" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
+position = Vector2(13901, -6340)
+
+[node name="StoneWall2" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
+position = Vector2(19199, -952)
+
+[node name="StoneWall3" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
+position = Vector2(10561, -4094)
+
+[node name="WoodenWalls" type="Node2D" parent="."]
+
+[node name="WoodenWall" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
+position = Vector2(7719, -1578)
+
+[node name="WoodenWall2" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
+position = Vector2(18261, -4398)
+
+[node name="ExplosionBuckets" type="Node2D" parent="."]
+position = Vector2(6160, -144)
+
+[node name="ExplosionBucket" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(4378, 143)
+
+[node name="StartPosition" parent="." instance=ExtResource("5_4pxah")]
+position = Vector2(1147, 1600)
+
+[node name="EndPoints" type="Node2D" parent="."]
+
+[node name="EndPosition" parent="EndPoints" instance=ExtResource("6_fxcgr")]
+position = Vector2(22336, 1685)
