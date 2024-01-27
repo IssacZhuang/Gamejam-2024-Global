@@ -102,6 +102,4 @@ position = Vector2(1147, 1600)
 [node name="EndPoints" type="Node2D" parent="."]
 
 [node name="EndPosition" parent="EndPoints" instance=ExtResource("6_fxcgr")]
-position = Vector2(22336, 1685)
-is_active = false
-is_done = false
+position = Vector2(3031, 1302)
