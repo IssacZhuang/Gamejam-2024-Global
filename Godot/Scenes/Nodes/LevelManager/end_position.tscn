@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmg5y"]
 size = Vector2(697.5, 908)
 
-[node name="EndPosition" type="Area2D"]
+[node name="EndPosition" type="RigidBody2D"]
 position = Vector2(5400, 1920)
 script = ExtResource("1_ouvk8")
 metadata/_edit_group_ = true
@@ -14,7 +14,6 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36.25, 28)
 shape = SubResource("RectangleShape2D_qmg5y")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_43rdv")
