@@ -3,14 +3,16 @@
 [ext_resource type="Script" path="res://Scripts/EndPosition.gd" id="1_ouvk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmg5y"]
-size = Vector2(48, 128)
+size = Vector2(971.593, 1328.81)
 
-[node name="EndPosition" type="Area2D"]
+[node name="EndPosition" type="RigidBody2D"]
 position = Vector2(5400, 1920)
+rotation = -0.00190341
+mass = 1e+06
+gravity_scale = 0.0
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("1_ouvk8")
-endpointType = null
-is_active = null
-is_done = null
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -21,12 +23,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -24.0
 offset_top = -64.0
-offset_right = 24.0
-offset_bottom = 64.0
+offset_right = 950.0
+offset_bottom = 1274.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.976471, 0.698039, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(461.798, 600.403)
 shape = SubResource("RectangleShape2D_qmg5y")
-disabled = true

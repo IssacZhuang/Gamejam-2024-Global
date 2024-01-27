@@ -1,13 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cednalr1i1m6"]
+[gd_scene load_steps=22 format=3 uid="uid://cednalr1i1m6"]
 
 [ext_resource type="PackedScene" uid="uid://hq0mxgb6gjdk" path="res://Scenes/Nodes/LevelManager/level_1.tscn" id="1_4t6la"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
+[ext_resource type="AudioStream" uid="uid://bafgqrekp2x3j" path="res://Sounds/bgm_gaming.ogg" id="3_5rqgs"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_f20hd"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_icukb"]
+[ext_resource type="AudioStream" uid="uid://bh2ramdh54in5" path="res://Sounds/bgm_end.ogg" id="4_olj2v"]
+[ext_resource type="AudioStream" uid="uid://brh3u0dkqv6b4" path="res://Sounds/burst_out.ogg" id="5_16nbi"]
 [ext_resource type="PackedScene" path="res://Effect/Burst.tscn" id="5_klg7j"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterPower.gd" id="5_lfg7l"]
+[ext_resource type="AudioStream" uid="uid://cfmglrn14yjms" path="res://Sounds/burst.ogg" id="6_esjgk"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
+[ext_resource type="AudioStream" uid="uid://cxek3ccnxk7vf" path="res://Sounds/separate.ogg" id="7_hpnix"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterRotation.gd" id="7_k6dpy"]
+[ext_resource type="AudioStream" uid="uid://dr3ull1rnt3ns" path="res://Sounds/hit_block.ogg" id="8_n70ld"]
 [ext_resource type="Texture2D" uid="uid://h51me6ijfd88" path="res://Textures/Cat/PlayerRotation.png" id="8_yg3fl"]
 [ext_resource type="Shader" path="res://Scenes/sky.gdshader" id="9_gpder"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/EffectManager.gd" id="12_bl383"]
@@ -35,10 +41,12 @@ script = ExtResource("12_bl383")
 
 [node name="SoundManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("1_giy5v")
+music = Array[Resource]([ExtResource("3_5rqgs"), ExtResource("4_olj2v")])
+effects = Array[Resource]([ExtResource("5_16nbi"), ExtResource("6_esjgk"), ExtResource("7_hpnix"), ExtResource("8_n70ld")])
 
 [node name="MusicNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
-[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="SoundManagerNode2D/MusicNode2D"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundManagerNode2D/MusicNode2D"]
 
 [node name="EffectNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
@@ -116,7 +124,6 @@ text = "separate"
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-visible = false
 z_index = -999
 position = Vector2(23336, -8979.67)
 rotation = 1.5708
@@ -133,6 +140,8 @@ texture = SubResource("PlaceholderTexture2D_h3do8")
 [node name="Level1" parent="." instance=ExtResource("1_4t6la")]
 
 [connection signal="burst" from="CharacteManager/CharacterBoth" to="EffectManagerNode2D" method="trigger_effect_by_name" binds= ["Burst"]]
+[connection signal="burst" from="CharacteManager/CharacterBoth" to="SoundManagerNode2D" method="play_fx" binds= ["burst"]]
 [connection signal="burst" from="CharacteManager/CharacterBoth/Character1" to="EffectManagerNode2D" method="trigger_effect_by_name" binds= ["Burst"]]
+[connection signal="burst" from="CharacteManager/CharacterBoth/Character1" to="SoundManagerNode2D" method="play_fx" binds= ["burst"]]
 [connection signal="pressed" from="Button" to="CharacteManager" method="on_separate_charactors"]
 [connection signal="pressed" from="Button" to="SoundManagerNode2D" method="play_music" binds= ["SampleBgm"]]
