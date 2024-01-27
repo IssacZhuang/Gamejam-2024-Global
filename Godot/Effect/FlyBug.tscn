@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8w5pj5poradn"]
+
+[ext_resource type="Texture2D" uid="uid://5bxoqyrn7l2r" path="res://Textures/FlyBug/FlyBugAnim.png" id="1_2mjqu"]
+[ext_resource type="Script" path="res://Scripts/FlyBugs.gd" id="1_3h56m"]
+[ext_resource type="Texture2D" uid="uid://d3jvunicf8yya" path="res://Textures/FlyBug/FlyBugLine.png" id="2_4gu65"]
+[ext_resource type="Script" path="res://Scripts/AnimSprite2D.gd" id="2_bobh5"]
+[ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="3_0o75n"]
+
+[sub_resource type="Curve" id="Curve_37dce"]
+_data = [Vector2(0.0111732, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.108007, 0.174674), 0.0, 0.0, 0, 0, Vector2(0.221602, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.366853, 0.152368), 0.0, 0.0, 0, 0, Vector2(0.467412, 0.0319149), 0.0, 0.0, 0, 0, Vector2(0.616387, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.724395, 0.01407), 0.0, 0.0, 0, 0, Vector2(0.8473, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.998138, 0.00514758), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_elnaa"]
+curve = SubResource("Curve_37dce")
+
+[sub_resource type="Curve" id="Curve_w3r2j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sa2a4"]
+curve = SubResource("Curve_w3r2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_71sqe"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_sa2a4")
+color = Color(0.847059, 1, 1, 1)
+alpha_curve = SubResource("CurveTexture_elnaa")
+
+[node name="FlyBug" type="Node2D" node_paths=PackedStringArray("node1", "node2", "line")]
+script = ExtResource("1_3h56m")
+node1 = NodePath("Bug1")
+node2 = NodePath("Bug2")
+line = NodePath("Line")
+
+[node name="Line" type="Sprite2D" parent="."]
+position = Vector2(-114.5, -160)
+rotation = -0.00595822
+scale = Vector2(3.93366, 1)
+texture = ExtResource("2_4gu65")
+
+[node name="Bug2" type="Sprite2D" parent="."]
+position = Vector2(-618, -157)
+texture = ExtResource("1_2mjqu")
+hframes = 2
+frame = 1
+script = ExtResource("2_bobh5")
+playSpeed = 50
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Bug2"]
+position = Vector2(38, -5)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_71sqe")
+texture = ExtResource("3_0o75n")
+local_coords = true
+
+[node name="Bug1" type="Sprite2D" parent="."]
+position = Vector2(389, -163)
+texture = ExtResource("1_2mjqu")
+hframes = 2
+frame = 1
+script = ExtResource("2_bobh5")
+playSpeed = 50
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Bug1"]
+position = Vector2(38, -5)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_71sqe")
+texture = ExtResource("3_0o75n")
+local_coords = true

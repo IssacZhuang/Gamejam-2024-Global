@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://pug3twlkyols"]
+
+[ext_resource type="Texture2D" uid="uid://dc2ed5vlhx8wi" path="res://Textures/Cat/CatLeftLeg.PNG" id="1_qpx36"]
+[ext_resource type="Texture2D" uid="uid://bp13ojnbderc8" path="res://Textures/Cat/CatRightLeg.PNG" id="2_5unfo"]
+[ext_resource type="Texture2D" uid="uid://b82wd0ytetjl2" path="res://Textures/Cat/CatBody.PNG" id="3_2omyk"]
+[ext_resource type="Texture2D" uid="uid://d0u0utiqhbe8p" path="res://Textures/Cat/CatLeftHand.PNG" id="4_gseuj"]
+[ext_resource type="Texture2D" uid="uid://bptiqeeab44o8" path="res://Textures/Cat/CatRightHand.PNG" id="5_cci37"]
+[ext_resource type="PackedScene" uid="uid://cff7f6xpsguo0" path="res://Prefab/Gunlance.tscn" id="5_xi2rd"]
+[ext_resource type="Texture2D" uid="uid://beu02r1hqeorm" path="res://Textures/Cat/CatHeadOffset.PNG" id="6_r2cfd"]
+
+[node name="CatGunlance" type="Node2D"]
+
+[node name="CatLeftLeg" type="Sprite2D" parent="."]
+position = Vector2(-59.2647, -1.28261)
+rotation = 0.916648
+texture = ExtResource("1_qpx36")
+
+[node name="CatRightLeg" type="Sprite2D" parent="."]
+position = Vector2(-37, 43)
+rotation = 0.968946
+texture = ExtResource("2_5unfo")
+
+[node name="CatBody" type="Sprite2D" parent="."]
+position = Vector2(28, -26)
+rotation = 0.891543
+texture = ExtResource("3_2omyk")
+
+[node name="CatHeadOffset" type="Sprite2D" parent="."]
+position = Vector2(143, -144)
+texture = ExtResource("6_r2cfd")
+
+[node name="Gunlance" parent="." instance=ExtResource("5_xi2rd")]
+position = Vector2(-335, 28)
+rotation = -0.0950453
+
+[node name="CatLeftHand" type="Sprite2D" parent="."]
+position = Vector2(81, -3)
+texture = ExtResource("4_gseuj")
+
+[node name="CatRightHand" type="Sprite2D" parent="."]
+position = Vector2(209, -12)
+texture = ExtResource("5_cci37")

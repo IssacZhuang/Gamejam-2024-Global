@@ -6,7 +6,7 @@ extends Node2D
 @export var effects : Array[Resource]
 
 @onready var effects_container = $EffectNode2D
-@onready var audio_stream_player = $MusicNode2D/MusicPlayer2D
+@onready var audio_stream_player = $MusicNode2D/AudioStreamPlayer
 
 var paused_position : float = 0.0 #the position music has been paused at
 

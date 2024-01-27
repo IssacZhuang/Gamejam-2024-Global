@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://clruxt3jjw1xg"]
+
+[ext_resource type="Texture2D" uid="uid://dcx2101h7btfl" path="res://Textures/Effect/Cloud_1.png" id="1_0w5cx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dkxns"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_0h0oy"]
+_data = [Vector2(0.00931099, 0.000686288), 0.0, 0.0, 0, 0, Vector2(0.0949721, 0.500343), 0.0, 0.0, 0, 0, Vector2(0.895717, 0.495882), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_037lx"]
+curve = SubResource("Curve_0h0oy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eo10a"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 540, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 148.94
+initial_velocity_max = 148.94
+gravity = Vector3(0, 0, 0)
+scale_min = 12.0
+scale_max = 12.0
+alpha_curve = SubResource("CurveTexture_037lx")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 0.3603
+
+[node name="Cloud" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dkxns")
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_eo10a")
+texture = ExtResource("1_0w5cx")
+lifetime = 30.0
