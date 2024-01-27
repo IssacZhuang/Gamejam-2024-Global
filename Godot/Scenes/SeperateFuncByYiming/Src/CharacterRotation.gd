@@ -9,6 +9,7 @@ var is_active = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_active = false
+	body_entered.connect(on_character_body_entered)
 	#sleeping = true
 	pass # Replace with function body.
 
@@ -35,6 +36,14 @@ func _integrate_forces(state):
 		rotation_direction += 1
 	state.apply_torque(rotation_direction * torque)
 
+func on_character_body_entered(body):
+	print(body.name)
+	if body.name == "Floor":
+		emit_signal("game_over")
+	elif body.name == "Character1":
+		return
+	else:
+		emit_signal("collide_with_barrier")
 func on_separate():
 	is_active = true
 

@@ -17,6 +17,7 @@ signal burst
 func _ready():
 	can_burst = true
 	is_active = true
+	body_entered.connect(_on_character_body_entered)
 	#sleeping = true
 	shoot()
 
@@ -24,7 +25,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(is_invincible)
+	#print(is_invincible)
 	if cooldown_left > 0:
 		cooldown_left -= delta
 	
@@ -32,6 +33,17 @@ func _process(delta):
 		can_burst = true
 	else:
 		can_burst = false
+#func _physics_process(delta):
+	#if body_entered(node):
+		#print(node.name)
+func _on_character_body_entered(body):
+	print(body.name)
+	if body.name == "Floor":
+		emit_signal("game_over")
+	elif body.name == "Character2":
+		return
+	else:
+		emit_signal("collide_with_barrier")
 
 func shoot():
 	apply_impulse(initial_force)

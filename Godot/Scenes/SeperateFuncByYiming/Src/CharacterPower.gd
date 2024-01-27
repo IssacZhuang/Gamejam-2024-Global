@@ -15,6 +15,7 @@ signal burst
 func _ready():
 	can_burst = true
 	is_active = false
+	body_entered.connect(on_character_body_entered)
 	#sleeping = true
 	pass # Replace with function body.
 
@@ -53,6 +54,13 @@ func start_invincible():
 	is_invincible = false
 func on_separate():
 	is_active = true
-	
+func on_character_body_entered(body):
+
+	if body.name == "Floor":
+		emit_signal("game_over")
+	elif body.name == "Character2":
+		return
+	else:
+		emit_signal("collide_with_barrier")
 #func start():
 	#sleeping = false

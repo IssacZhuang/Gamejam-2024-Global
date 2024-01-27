@@ -58,6 +58,9 @@ max_zoom = 0.265
 position = Vector2(774, 1716)
 gravity_scale = 0.5
 center_of_mass_mode = 1
+max_contacts_reported = 5
+contact_monitor = true
+constant_force = Vector2(10, 0)
 script = ExtResource("4_icukb")
 thrust = Vector2(0, -2000)
 torque = 4000000
@@ -66,6 +69,8 @@ initial_force = Vector2(2000, -3000)
 [node name="Character1" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(2, 3)
 center_of_mass_mode = 1
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("5_lfg7l")
 thrust = Vector2(0, -2000)
 
@@ -83,6 +88,8 @@ position = Vector2(-500, 145)
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 center_of_mass_mode = 1
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("7_k6dpy")
 torque = 4000000
 
