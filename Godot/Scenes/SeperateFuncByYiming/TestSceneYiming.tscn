@@ -5,11 +5,12 @@
 [ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_s12qr"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_mlq8l"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_tp4gg"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character1.gd" id="5_pukxa"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterRotation.gd" id="5_pukxa"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="7_i2ufo"]
-[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/Character2.gd" id="7_u5xfn"]
+[ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterPower.gd" id="7_u5xfn"]
 [ext_resource type="PackedScene" uid="uid://bt0qthkqwttwe" path="res://Effect/Explosion1.tscn" id="8_ux7tq"]
 [ext_resource type="Texture2D" uid="uid://h51me6ijfd88" path="res://Textures/Cat/PlayerRotation.png" id="9_5p1ep"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bor5m"]
 

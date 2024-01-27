@@ -22,26 +22,30 @@ script = ExtResource("1_f1vo5")
 [node name="LeftLimit" type="StaticBody2D" parent="SideLimit"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/LeftLimit"]
-position = Vector2(9, 1056)
+position = Vector2(9, -3278)
+scale = Vector2(5, 5.4)
 shape = SubResource("RectangleShape2D_yq72u")
 
 [node name="TopLimit" type="StaticBody2D" parent="SideLimit"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/TopLimit"]
-position = Vector2(2899.5, -8)
+position = Vector2(14353, -9032)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_6etmp")
 
 [node name="RightLimit" type="StaticBody2D" parent="SideLimit"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/RightLimit"]
-position = Vector2(5757, 1155)
+position = Vector2(28811, -3304)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_8b0vs")
 
 [node name="Floor" type="StaticBody2D" parent="SideLimit"]
 position = Vector2(0, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/Floor"]
-position = Vector2(2880, 1120)
+position = Vector2(14411, 2330)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_m5yun")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -49,8 +53,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 974.0
+offset_top = 1579.0
 offset_right = 5760.0
-offset_bottom = 1274.0
+offset_bottom = 1879.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
