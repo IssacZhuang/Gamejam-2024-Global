@@ -8,6 +8,7 @@ var is_active = true
 @export var initial_force: Vector2 = Vector2(3000, -4000)
 @export var cooldown_time = 2 #冷却时间,单位秒
 @export var invincible_time = 0.5 #冲刺后无敌时间
+@export var gunlance: Node2D
 var cooldown_left = 0
 var can_burst: bool
 var is_invincible: bool
@@ -26,13 +27,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(is_invincible)
-	if cooldown_left > 0:
-		cooldown_left -= delta
-	
-	if cooldown_left <= 0:
-		can_burst = true
-	else:
-		can_burst = false
+	if is_active:
+		if cooldown_left > 0:
+			cooldown_left -= delta
+		
+		if cooldown_left <= 0:
+			if gunlance.state != gunlance.State.Normal:
+				gunlance.state = gunlance.State.Normal
+			can_burst = true
+		else:
+			gunlance.state = gunlance.State.Overheat
+			can_burst = false
 #func _physics_process(delta):
 	#if body_entered(node):
 		#print(node.name)
@@ -58,7 +63,7 @@ func _integrate_forces(state):
 		Returns:
 			None
 	"""
-	if can_burst and Input.is_action_just_pressed("player_power_down"):
+	if is_active and can_burst and Input.is_action_just_pressed("player_power_down"):
 		#print("player_power_down")
 		#state.apply_force(thrust.rotated(rotation))
 		state.apply_impulse(thrust.rotated(rotation+1.57))

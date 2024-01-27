@@ -226,9 +226,9 @@ func merge_charactors():
 	# change_char_attribute_parent(char1AnimatedSprite, char1CollisionShape2D, charBoth)
 	# change_char_attribute_parent(char2AnimatedSprite, char2CollisionShape2D, charBoth)
 	# move all the children of char1 and char2 to charBoth
-	for child in char1_attributes:
-		change_parent(child, charBoth)
 	for child in char2_attributes:
+		change_parent(child, charBoth)
+	for child in char1_attributes:
 		change_parent(child, charBoth)
 	return
 
