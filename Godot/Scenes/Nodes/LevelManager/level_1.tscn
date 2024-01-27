@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=13 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
 [ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
 [ext_resource type="PackedScene" uid="uid://c8hbpb2fb2lru" path="res://Scenes/Nodes/LevelManager/end_position.tscn" id="6_fxcgr"]
+[ext_resource type="Texture2D" uid="uid://bgvqj88v6aj54" path="res://Textures/Flag/FlagBlue.png" id="7_6fcf7"]
+[ext_resource type="Texture2D" uid="uid://08wbwxlo84fh" path="res://Textures/Flag/FlagPink.png" id="8_1yg2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq72u"]
 size = Vector2(29, 2106)
@@ -101,5 +103,10 @@ position = Vector2(1147, 1600)
 
 [node name="EndPoints" type="Node2D" parent="."]
 
-[node name="EndPosition" parent="EndPoints" instance=ExtResource("6_fxcgr")]
-position = Vector2(3031, 1302)
+[node name="EndPositionBlue" parent="EndPoints" instance=ExtResource("6_fxcgr")]
+position = Vector2(23122, 2122)
+texture = ExtResource("7_6fcf7")
+
+[node name="EndPositionPink" parent="EndPoints" instance=ExtResource("6_fxcgr")]
+position = Vector2(26100, 2125)
+texture = ExtResource("8_1yg2t")

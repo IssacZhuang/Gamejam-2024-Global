@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Gunlance.gd" id="1_7afbe"]
 [ext_resource type="Texture2D" uid="uid://b1wxplu4hel0a" path="res://Textures/Gunlance.png" id="1_wgs4a"]
 [ext_resource type="Texture2D" uid="uid://cxkqw01cloouf" path="res://Textures/GunlanceBloom.PNG" id="2_dwexb"]
-[ext_resource type="PackedScene" uid="uid://d2ffrn23gg78p" path="res://Effect/Smoke.tscn" id="3_hp3sl"]
+[ext_resource type="PackedScene" path="res://Effect/Smoke.tscn" id="3_hp3sl"]
 [ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="4_bv5n5"]
 
 [sub_resource type="Curve" id="Curve_ugnjy"]

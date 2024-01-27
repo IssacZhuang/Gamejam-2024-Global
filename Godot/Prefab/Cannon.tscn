@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxd1dtrklp6du"]
+[gd_scene load_steps=4 format=3 uid="uid://kx5afa1clky1"]
 
-[ext_resource type="Texture2D" uid="uid://dhvcm7iv05sbk" path="res://Textures/Cannon/Barrel.PNG" id="1_xdf16"]
+[ext_resource type="Texture2D" uid="uid://bxb148ejwirie" path="res://Textures/Cannon/Barrel.PNG" id="1_xdf16"]
 [ext_resource type="Script" path="res://Scripts/Cannon.gd" id="1_yqour"]
-[ext_resource type="Texture2D" uid="uid://d31wwkxldkjv8" path="res://Textures/Cannon/Base.PNG" id="2_0dab6"]
+[ext_resource type="Texture2D" uid="uid://cek7p1hgxun8i" path="res://Textures/Cannon/Base.PNG" id="2_0dab6"]
 
 [node name="Cannon" type="Node2D" node_paths=PackedStringArray("barrelCenter", "focusPoint")]
 position = Vector2(-34, -458)

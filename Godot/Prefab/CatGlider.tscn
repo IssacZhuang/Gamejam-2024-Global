@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bp13ojnbderc8" path="res://Textures/Cat/CatRightLeg.PNG" id="1_ob6i8"]
 [ext_resource type="Texture2D" uid="uid://gw1eufm288vc" path="res://Textures/Cat/CatBodyPink.PNG" id="2_glva0"]
 [ext_resource type="Texture2D" uid="uid://dod6a8dp45y4m" path="res://Textures/Cat/CatHeadOffsetPink.PNG" id="3_6gfwc"]
-[ext_resource type="Texture2D" uid="uid://6v87rq8183ir" path="res://Textures/Glider.png" id="4_v8o4l"]
+[ext_resource type="Texture2D" uid="uid://ccw55qeha4b40" path="res://Textures/Glider.png" id="4_v8o4l"]
 [ext_resource type="Texture2D" uid="uid://bptiqeeab44o8" path="res://Textures/Cat/CatRightHand.PNG" id="5_e6223"]
 
 [node name="CatGlider" type="Node2D"]
@@ -11,13 +11,11 @@
 [node name="CatRightLeg2" type="Sprite2D" parent="."]
 position = Vector2(-63.7894, -92.1778)
 rotation = 0.713755
-scale = Vector2(1, 1)
 texture = ExtResource("1_ob6i8")
 
 [node name="CatRightLeg" type="Sprite2D" parent="."]
 position = Vector2(-89.7894, -120.178)
 rotation = 0.706694
-scale = Vector2(1, 1)
 texture = ExtResource("1_ob6i8")
 
 [node name="CatBodyPink" type="Sprite2D" parent="."]
