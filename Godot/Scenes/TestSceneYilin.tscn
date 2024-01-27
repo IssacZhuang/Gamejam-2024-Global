@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cednalr1i1m6"]
+[gd_scene load_steps=16 format=3 uid="uid://cednalr1i1m6"]
 
 [ext_resource type="PackedScene" uid="uid://hq0mxgb6gjdk" path="res://Scenes/Nodes/LevelManager/level_1.tscn" id="1_4t6la"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
-[ext_resource type="AudioStream" uid="uid://c0seygph0ks3a" path="res://Scenes/SeperateFuncByYiming/SampleFile/SampleBgm.mp3" id="2_c4tcq"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_f20hd"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_icukb"]
 [ext_resource type="PackedScene" path="res://Effect/Burst.tscn" id="5_klg7j"]
@@ -36,7 +35,6 @@ script = ExtResource("12_bl383")
 
 [node name="SoundManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("1_giy5v")
-music = Array[Resource]([ExtResource("2_c4tcq")])
 
 [node name="MusicNode2D" type="Node2D" parent="SoundManagerNode2D"]
 
