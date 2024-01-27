@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8l4r71xwih04"]
+
+[ext_resource type="Script" path="res://Scripts/ParticleGroupEmit.gd" id="1_m7gqe"]
+[ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="2_a26gs"]
+[ext_resource type="Texture2D" uid="uid://bmjnod2tt2aye" path="res://Textures/Effect/Flame2.png" id="2_nern8"]
+[ext_resource type="Texture2D" uid="uid://dv6hvdfcrwl5h" path="res://Textures/Effect/Explosion_3.png" id="3_uodyb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xpuh4"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_7yx7y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15873, 0.675), 0.0, 0.0, 0, 0, Vector2(0.269841, 0.217347), 0.0, 0.0, 0, 0, Vector2(0.997355, 0.0183673), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ye0k"]
+curve = SubResource("Curve_7yx7y")
+
+[sub_resource type="Curve" id="Curve_4k3qq"]
+_data = [Vector2(0.015873, 0), 0.0, 0.0, 0, 0, Vector2(0.177249, 0.820918), 0.0, 0.0, 0, 0, Vector2(0.677249, 0.595408), 0.0, 0.0, 0, 0, Vector2(1, 0.595408), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_07xt5"]
+curve = SubResource("Curve_4k3qq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1e1x"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_07xt5")
+color = Color(1, 0.866667, 0.670588, 1)
+alpha_curve = SubResource("CurveTexture_2ye0k")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hgfvq"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jv8ft"]
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = -90.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48k81"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sj1r"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Burst" type="Node2D"]
+script = ExtResource("1_m7gqe")
+
+[node name="Bloom" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_xpuh4")
+position = Vector2(0, -1)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_l1e1x")
+texture = ExtResource("2_a26gs")
+lifetime = 0.3
+one_shot = true
+
+[node name="Splash" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_hgfvq")
+position = Vector2(-173, -4)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_jv8ft")
+texture = ExtResource("2_nern8")
+lifetime = 0.3
+one_shot = true
+
+[node name="Explosion" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_48k81")
+rotation = 0.00062664
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_0sj1r")
+texture = ExtResource("3_uodyb")
+lifetime = 0.3
+one_shot = true
