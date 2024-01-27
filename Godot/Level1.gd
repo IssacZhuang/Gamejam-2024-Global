@@ -12,10 +12,10 @@ var startPositon = Vector2(250, 1600)
 var endPointsList: Array[Node2D]
 
 func _ready():
-	endPointsPositons = [
-		[5400, 1920, EndPosition.endpoint_type.BothEnd],
-		[2700, 1920, EndPosition.endpoint_type.BothEnd]
-	]
+	#endPointsPositons = [
+		#[5400, 1920, EndPosition.endpoint_type.BothEnd],
+		#[2700, 1920, EndPosition.endpoint_type.BothEnd]
+	#]
 	var currentStartPoint = startPoint.instantiate()
 	currentStartPoint.position = startPositon
 	add_child(currentStartPoint)
