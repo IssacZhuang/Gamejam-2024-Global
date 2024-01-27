@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bflopcxx0tqgn"]
+
+[ext_resource type="Texture2D" uid="uid://dod6a8dp45y4m" path="res://Textures/Cat/CatHeadOffsetPink.PNG" id="1_toc4v"]
+
+[node name="RedFlag" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_toc4v")
