@@ -12,5 +12,7 @@ func _ready():
 func _process(delta):
 	if camera == null:
 		return
-	scale = camera.zoom * relativeScale
+	scale.x = 1 / camera.zoom.x * relativeScale
+	scale.y = 1 / camera.zoom.y * relativeScale
+	print(scale)
 	pass
