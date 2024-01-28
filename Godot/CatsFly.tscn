@@ -1,22 +1,23 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvefj0ur8g1u4"]
+[gd_scene load_steps=32 format=3 uid="uid://cvefj0ur8g1u4"]
 
 [ext_resource type="Script" path="res://Scripts/CatsFly.gd" id="1_g4ox2"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="2_12wps"]
 [ext_resource type="PackedScene" uid="uid://hq0mxgb6gjdk" path="res://Scenes/Nodes/LevelManager/level_1.tscn" id="2_36eqh"]
 [ext_resource type="Script" path="res://Scripts/EndPointer.gd" id="2_mkl4d"]
-[ext_resource type="PackedScene" uid="uid://bvmdty4ebejf7" path="res://Scenes/end_pointer_prefab/BlueFlag.tscn" id="3_5ntme"]
-[ext_resource type="PackedScene" uid="uid://bflopcxx0tqgn" path="res://Scenes/end_pointer_prefab/RedFlag.tscn" id="4_se546"]
-[ext_resource type="AudioStream" uid="uid://plh3o0we2kyi" path="res://Sounds/bgm_gaming.ogg" id="5_jbl0u"]
-[ext_resource type="AudioStream" uid="uid://j4imhwc1h7p4" path="res://Sounds/bgm_end.ogg" id="6_wcjju"]
-[ext_resource type="AudioStream" uid="uid://qfdjho56ji6h" path="res://Sounds/burst_out.ogg" id="7_svw1a"]
-[ext_resource type="AudioStream" uid="uid://dxsmeahud6772" path="res://Sounds/burst.ogg" id="8_ghg1g"]
-[ext_resource type="AudioStream" uid="uid://cc1kgqr26tj5b" path="res://Sounds/separate.ogg" id="9_5bx85"]
+[ext_resource type="PackedScene" path="res://Scenes/end_pointer_prefab/BlueFlag.tscn" id="3_5ntme"]
+[ext_resource type="PackedScene" path="res://Scenes/end_pointer_prefab/RedFlag.tscn" id="4_se546"]
+[ext_resource type="AudioStream" uid="uid://bafgqrekp2x3j" path="res://Sounds/bgm_gaming.ogg" id="5_jbl0u"]
+[ext_resource type="AudioStream" uid="uid://bh2ramdh54in5" path="res://Sounds/bgm_end.ogg" id="6_wcjju"]
+[ext_resource type="AudioStream" uid="uid://brh3u0dkqv6b4" path="res://Sounds/burst_out.ogg" id="7_svw1a"]
+[ext_resource type="AudioStream" uid="uid://cfmglrn14yjms" path="res://Sounds/burst.ogg" id="8_ghg1g"]
+[ext_resource type="AudioStream" uid="uid://cxek3ccnxk7vf" path="res://Sounds/separate.ogg" id="9_5bx85"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="9_x1v8y"]
-[ext_resource type="AudioStream" uid="uid://c3fps6wueqota" path="res://Sounds/hit_block.ogg" id="10_4pmg2"]
+[ext_resource type="AudioStream" uid="uid://dr3ull1rnt3ns" path="res://Sounds/hit_block.ogg" id="10_4pmg2"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/EffectManager.gd" id="11_fp7qa"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="12_ufdxf"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="13_bb65v"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterPower.gd" id="14_148ox"]
+[ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="15_naeri"]
 [ext_resource type="Texture2D" uid="uid://dc2ed5vlhx8wi" path="res://Textures/Cat/CatLeftLeg.PNG" id="16_iktpg"]
 [ext_resource type="PackedScene" path="res://Effect/Burst.tscn" id="16_lkjhp"]
 [ext_resource type="Texture2D" uid="uid://bp13ojnbderc8" path="res://Textures/Cat/CatRightLeg.PNG" id="17_2bpve"]
@@ -28,7 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://bptiqeeab44o8" path="res://Textures/Cat/CatRightHand.PNG" id="22_sjykn"]
 [ext_resource type="Texture2D" uid="uid://gw1eufm288vc" path="res://Textures/Cat/CatBodyPink.PNG" id="24_el8mi"]
 [ext_resource type="Texture2D" uid="uid://dod6a8dp45y4m" path="res://Textures/Cat/CatHeadOffsetPink.PNG" id="25_kypgc"]
-[ext_resource type="Texture2D" uid="uid://c4qvmjxc6d5pt" path="res://Textures/Glider.png" id="26_v4o3g"]
+[ext_resource type="Texture2D" uid="uid://ccw55qeha4b40" path="res://Textures/Glider.png" id="26_v4o3g"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n25er"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_g4ox2")
@@ -128,6 +133,12 @@ texture = ExtResource("21_vttiy")
 [node name="CatRightHand" type="Sprite2D" parent="CharacteManager/CharacterBoth/Character1"]
 position = Vector2(503, 29.5)
 texture = ExtResource("22_sjykn")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CharacteManager/CharacterBoth/Character1"]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_n25er")
+texture = ExtResource("15_naeri")
+speed_scale = 2.0
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(13, -9)
