@@ -69,6 +69,7 @@ func _integrate_forces(state):
 		state.apply_impulse(thrust.rotated(rotation+1.57))
 		cooldown_left = cooldown_time
 		burst.emit()
+		$GPUParticles2D.emitting = true
 		start_invincible()
 	else:
 		state.apply_force(Vector2())
@@ -84,6 +85,7 @@ func start_invincible():
 	is_invincible = true
 	await get_tree().create_timer(1.0).timeout
 	is_invincible = false
+	$GPUParticles2D.emitting = false
 func on_separate():
 	is_active = false
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=14 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
+[ext_resource type="Texture2D" uid="uid://c3h14qcd5c87x" path="res://Textures/Ground.png" id="2_o4k5q"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
 [ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
@@ -63,12 +64,26 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1579.0
+offset_top = 3253.0
 offset_right = 5760.0
-offset_bottom = 1879.0
+offset_bottom = 3553.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="SideLimit/Floor"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SideLimit/Floor/ParallaxBackground"]
+position = Vector2(0, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="SideLimit/Floor/ParallaxBackground/ParallaxLayer"]
+texture_filter = 3
+texture_repeat = 2
+position = Vector2(2289.5, 1981)
+scale = Vector2(4.44043, 1.48047)
+texture = ExtResource("2_o4k5q")
+region_enabled = true
+region_rect = Rect2(0.754791, 517.876, 1021.25, 509.231)
 
 [node name="StoneWalls" type="Node2D" parent="."]
 
