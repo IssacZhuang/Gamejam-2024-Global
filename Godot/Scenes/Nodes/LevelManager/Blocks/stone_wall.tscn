@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dinen2grqogrm"]
+[gd_scene load_steps=14 format=3 uid="uid://dinen2grqogrm"]
 
 [ext_resource type="Texture2D" uid="uid://d3jvunicf8yya" path="res://Textures/FlyBug/FlyBugLine.png" id="1_2nvgi"]
 [ext_resource type="Script" path="res://Scripts/FlyBugs.gd" id="2_ga1oj"]
 [ext_resource type="Texture2D" uid="uid://5bxoqyrn7l2r" path="res://Textures/FlyBug/FlyBugAnim.png" id="3_c55c5"]
 [ext_resource type="Script" path="res://Scripts/AnimSprite2D.gd" id="4_e8bs2"]
 [ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="5_ftysf"]
+[ext_resource type="Script" path="res://Scripts/Blocks/stone_wall.gd" id="6_3rrqv"]
 [ext_resource type="Texture2D" uid="uid://cvdelintjcf4" path="res://Textures/Wall/StoneWall.png" id="6_bl5dw"]
 
 [sub_resource type="Curve" id="Curve_r4xbq"]
@@ -58,7 +59,6 @@ scale = Vector2(0.05, 0.029)
 skew = 0.00343871
 texture = ExtResource("3_c55c5")
 hframes = 2
-frame = 1
 script = ExtResource("4_e8bs2")
 playSpeed = 50
 
@@ -75,6 +75,7 @@ gravity_scale = 0.0
 max_contacts_reported = 5
 contact_monitor = true
 angular_damp = 90.0
+script = ExtResource("6_3rrqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-1, 0)
