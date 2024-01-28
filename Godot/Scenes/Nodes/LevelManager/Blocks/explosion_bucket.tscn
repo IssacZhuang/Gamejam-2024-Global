@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/AnimSprite2D.gd" id="4_pydsh"]
 [ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="5_1qihh"]
 [ext_resource type="Texture2D" uid="uid://dor7n7ekhq4rw" path="res://Textures/Barrel.png" id="7_u6t1a"]
-[ext_resource type="PackedScene" path="res://Effect/Smoke.tscn" id="8_job85"]
+[ext_resource type="PackedScene" uid="uid://d2ffrn23gg78p" path="res://Effect/Smoke.tscn" id="8_job85"]
 
 [sub_resource type="Curve" id="Curve_rtgco"]
 _data = [Vector2(0.0111732, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.108007, 0.174674), 0.0, 0.0, 0, 0, Vector2(0.221602, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.366853, 0.152368), 0.0, 0.0, 0, 0, Vector2(0.467412, 0.0319149), 0.0, 0.0, 0, 0, Vector2(0.616387, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.724395, 0.01407), 0.0, 0.0, 0, 0, Vector2(0.8473, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.998138, 0.00514758), 0.0, 0.0, 0, 0]

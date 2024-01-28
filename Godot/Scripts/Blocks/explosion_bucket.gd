@@ -22,15 +22,15 @@ func _on_character_body_entered_explosion_bucket(body):
 		soundManager.play_fx("burst_out")
 		
 		check_broke(body)
-	elif body.name == "Character1":
+	elif body.name == "Character1" or body.name == "Character2":
 		effectManager.trigger_effect_once(self.global_position, 0, Vector2(1,1), 0, "Explosion1")
-		print("Character1 hit wooden!")
+		print("Character hit wooden!")
 		check_broke(body)
-	elif body.name == "Character2":
-		effectManager.trigger_effect_once(self.global_position, 0, Vector2(1,1), 0, "Explosion1")
-		print("Character2 hit wooden!")
-		check_broke(body)
-	pass
+	# elif body.name == "Character2":
+	# 	effectManager.trigger_effect_once(self.global_position, 0, Vector2(1,1), 0, "Explosion1")
+	# 	print("Character2 hit wooden!")
+	# 	check_broke(body)
+	# pass
 
 
 func explosion_destroy():
