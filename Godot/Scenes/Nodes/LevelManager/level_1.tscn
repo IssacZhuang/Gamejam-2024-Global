@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=16 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
-[ext_resource type="Texture2D" uid="uid://c3h14qcd5c87x" path="res://Textures/Ground.png" id="2_3sju3"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
 [ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
+[ext_resource type="PackedScene" uid="uid://kx5afa1clky1" path="res://Prefab/Cannon.tscn" id="6_1scen"]
+[ext_resource type="Script" path="res://Scenes/Nodes/LevelManager/EndPoints.gd" id="6_7nm8j"]
 [ext_resource type="PackedScene" uid="uid://c8hbpb2fb2lru" path="res://Scenes/Nodes/LevelManager/end_position.tscn" id="6_fxcgr"]
 [ext_resource type="Texture2D" uid="uid://bgvqj88v6aj54" path="res://Textures/Flag/FlagBlue.png" id="7_6fcf7"]
 [ext_resource type="Texture2D" uid="uid://08wbwxlo84fh" path="res://Textures/Flag/FlagPink.png" id="8_1yg2t"]
@@ -20,7 +21,10 @@ size = Vector2(5811, 36)
 size = Vector2(32, 2310)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5yun"]
-size = Vector2(5760, 300)
+size = Vector2(3951.4, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qcet"]
+size = Vector2(9156, 1520)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_f1vo5")
@@ -55,7 +59,7 @@ shape = SubResource("RectangleShape2D_8b0vs")
 position = Vector2(0, 1024)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/Floor"]
-position = Vector2(14411, 2330)
+position = Vector2(9889.5, 2330)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_m5yun")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -65,61 +69,19 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 1579.0
-offset_right = 5760.0
+offset_right = 3950.0
 offset_bottom = 1879.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 
-[node name="1" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(1536, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
+[node name="EndArea" type="StaticBody2D" parent="SideLimit"]
+position = Vector2(26159, 3202)
 
-[node name="2" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(4608, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="3" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(7680, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="4" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(10752, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="5" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(13824, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="6" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(16896, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="7" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(19968, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="8" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(23040, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="9" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(26112, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="10" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(29184, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideLimit/EndArea"]
+position = Vector2(-1810, 144)
+shape = SubResource("RectangleShape2D_5qcet")
+metadata/_edit_group_ = true
 
 [node name="StoneWalls" type="Node2D" parent="."]
 
@@ -132,7 +94,7 @@ rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
 
 [node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall" index="2"]
 rotation = -1.5708
@@ -146,7 +108,7 @@ rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
 
 [node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall2" index="2"]
 rotation = -1.5708
@@ -165,7 +127,7 @@ rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall" index="2"]
 rotation = 1.5708
@@ -179,7 +141,7 @@ rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall2" index="2"]
 rotation = 1.5708
@@ -196,7 +158,7 @@ rotation = -1.35272
 scale = Vector2(10.0025, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall4" index="2"]
 position = Vector2(914, 209)
@@ -223,23 +185,33 @@ position = Vector2(13643, 1351)
 [node name="ExplosionBucket6" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
 position = Vector2(15070, -3882)
 
-[node name="ExplosionBucket7" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
-position = Vector2(8372, -1104)
-
 [node name="ExplosionBucket8" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
 position = Vector2(7954, -6641)
 
 [node name="StartPosition" parent="." instance=ExtResource("5_4pxah")]
-position = Vector2(1147, 1600)
+position = Vector2(2296, 1225)
+
+[node name="Cannon" parent="." instance=ExtResource("6_1scen")]
+position = Vector2(1316, 1685)
+scale = Vector2(2, 2)
+
+[node name="BarrelCenter" parent="Cannon" index="0"]
+rotation = -0.513832
+
+[node name="Focus" parent="Cannon" index="2"]
+position = Vector2(1532, -820.5)
 
 [node name="EndPoints" type="Node2D" parent="."]
+script = ExtResource("6_7nm8j")
 
 [node name="EndPositionBlue" parent="EndPoints" instance=ExtResource("6_fxcgr")]
-position = Vector2(23093, 1261)
+position = Vector2(23045, 1285)
+endpointType = 1
 texture = ExtResource("7_6fcf7")
 
 [node name="EndPositionPink" parent="EndPoints" instance=ExtResource("6_fxcgr")]
 position = Vector2(25382, 1294)
+endpointType = 0
 texture = ExtResource("8_1yg2t")
 
 [editable path="StoneWalls/StoneWall"]
@@ -247,3 +219,4 @@ texture = ExtResource("8_1yg2t")
 [editable path="WoodenWalls/WoodenWall"]
 [editable path="WoodenWalls/WoodenWall2"]
 [editable path="WoodenWalls/WoodenWall4"]
+[editable path="Cannon"]
