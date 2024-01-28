@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ouoxfj1us7ng"]
+[gd_scene load_steps=9 format=3 uid="uid://ouoxfj1us7ng"]
 
-[ext_resource type="Texture2D" uid="uid://b32risdjfgkje" path="res://Textures/UI/Button.PNG" id="1_f5twd"]
-[ext_resource type="Texture2D" uid="uid://byx2mjdfchsc0" path="res://Textures/UI/ButtonPressed.PNG" id="2_14xy7"]
-[ext_resource type="Texture2D" uid="uid://0drf7r1mavxl" path="res://Textures/UI/IconPlay.PNG" id="3_w0ogn"]
-[ext_resource type="Texture2D" uid="uid://ukehlgbtt5nc" path="res://Textures/UI/IconInfo.PNG" id="4_g6fje"]
-[ext_resource type="Texture2D" uid="uid://clx00a4sgexyg" path="res://Textures/UI/IconExit.PNG" id="5_71gnp"]
-[ext_resource type="PackedScene" uid="uid://pug3twlkyols" path="res://Prefab/CatGunlance.tscn" id="6_nu3d7"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_4mo1p"]
+[ext_resource type="Texture2D" uid="uid://b32risdjfgkje" path="res://Textures/UI/Button.PNG" id="2_ue0kg"]
+[ext_resource type="Texture2D" uid="uid://byx2mjdfchsc0" path="res://Textures/UI/ButtonPressed.PNG" id="3_3brr4"]
+[ext_resource type="Texture2D" uid="uid://0drf7r1mavxl" path="res://Textures/UI/IconPlay.PNG" id="4_pdvhp"]
+[ext_resource type="Texture2D" uid="uid://ukehlgbtt5nc" path="res://Textures/UI/IconInfo.PNG" id="5_37wwf"]
+[ext_resource type="Texture2D" uid="uid://clx00a4sgexyg" path="res://Textures/UI/IconExit.PNG" id="6_73yuh"]
+[ext_resource type="PackedScene" uid="uid://pug3twlkyols" path="res://Prefab/CatGunlance.tscn" id="7_addhq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qmvr7"]
 font_size = 64
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4mo1p")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -65,8 +67,8 @@ layout_mode = 2
 [node name="Start" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 94.5)
 layout_mode = 2
-texture_normal = ExtResource("1_f5twd")
-texture_pressed = ExtResource("2_14xy7")
+texture_normal = ExtResource("2_ue0kg")
+texture_pressed = ExtResource("3_3brr4")
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Start"]
 layout_mode = 0
@@ -74,7 +76,7 @@ offset_left = 46.0
 offset_top = 17.5
 offset_right = 100.0
 offset_bottom = 77.5
-texture = ExtResource("3_w0ogn")
+texture = ExtResource("4_pdvhp")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Start"]
 layout_mode = 0
@@ -91,8 +93,8 @@ layout_mode = 2
 [node name="Info" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 94.5)
 layout_mode = 2
-texture_normal = ExtResource("1_f5twd")
-texture_pressed = ExtResource("2_14xy7")
+texture_normal = ExtResource("2_ue0kg")
+texture_pressed = ExtResource("3_3brr4")
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Info"]
 layout_mode = 0
@@ -100,7 +102,7 @@ offset_left = 62.0
 offset_top = 17.5
 offset_right = 116.0
 offset_bottom = 81.5
-texture = ExtResource("4_g6fje")
+texture = ExtResource("5_37wwf")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Info"]
@@ -119,8 +121,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 94.5)
 layout_mode = 2
 size_flags_vertical = 3
-texture_normal = ExtResource("1_f5twd")
-texture_pressed = ExtResource("2_14xy7")
+texture_normal = ExtResource("2_ue0kg")
+texture_pressed = ExtResource("3_3brr4")
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit"]
 layout_mode = 0
@@ -128,7 +130,7 @@ offset_left = 46.0
 offset_top = 17.5
 offset_right = 100.0
 offset_bottom = 77.5
-texture = ExtResource("5_71gnp")
+texture = ExtResource("6_73yuh")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit"]
 layout_mode = 0
@@ -159,10 +161,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(945, 945)
 layout_mode = 2
 
-[node name="CatGunlance" parent="." instance=ExtResource("6_nu3d7")]
+[node name="CatGunlance" parent="." instance=ExtResource("7_addhq")]
 position = Vector2(1233, 847)
 
 [node name="Gunlance" parent="CatGunlance" index="4"]
 state = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Start" to="." method="on_change_scene"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="on_exit"]
 
 [editable path="CatGunlance"]

@@ -27,6 +27,10 @@ size = Vector2(3951.4, 300)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qcet"]
 size = Vector2(9156, 1520)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tau6y"]
+font_size = 150
+font_color = Color(1, 0.0235294, 0, 1)
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_f1vo5")
 
@@ -134,11 +138,6 @@ metadata/_edit_group_ = true
 [node name="StoneWall" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
 position = Vector2(15437, -3172)
 
-[node name="Line" parent="StoneWalls/StoneWall" index="0"]
-position = Vector2(-633, -1145.5)
-rotation = -1.00094
-scale = Vector2(10.6288, 1.28435)
-
 [node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
 frame = 0
 
@@ -147,11 +146,6 @@ rotation = -1.5708
 
 [node name="StoneWall2" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
 position = Vector2(16732, 213)
-
-[node name="Line" parent="StoneWalls/StoneWall2" index="0"]
-position = Vector2(-633, -1145.5)
-rotation = -1.00094
-scale = Vector2(10.6288, 1.28435)
 
 [node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
 frame = 0
@@ -168,9 +162,7 @@ position = Vector2(10927, -1027)
 position = Vector2(7719, -1578)
 
 [node name="Line" parent="WoodenWalls/WoodenWall" index="0"]
-position = Vector2(734, -1145.5)
-rotation = 1.06596
-scale = Vector2(10.2247, 1.28435)
+scale = Vector2(8.95791, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
 frame = 0
@@ -182,9 +174,7 @@ rotation = 1.5708
 position = Vector2(10533, -4526)
 
 [node name="Line" parent="WoodenWalls/WoodenWall2" index="0"]
-position = Vector2(734, -1145.5)
-rotation = 1.06596
-scale = Vector2(10.2247, 1.28435)
+scale = Vector2(8.95791, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
 frame = 0
@@ -199,9 +189,9 @@ position = Vector2(12843, 152)
 position = Vector2(23898, -2245)
 
 [node name="Line" parent="WoodenWalls/WoodenWall4" index="0"]
-position = Vector2(-176, -1041)
-rotation = -1.35272
-scale = Vector2(10.0025, 1.28435)
+position = Vector2(507.5, -1041)
+rotation = 1.25638
+scale = Vector2(10.269, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
 frame = 0
@@ -246,6 +236,14 @@ rotation = -0.513832
 
 [node name="Focus" parent="Cannon" index="2"]
 position = Vector2(1532, -820.5)
+
+[node name="Label" type="Label" parent="Cannon"]
+offset_left = -408.5
+offset_top = -1053.5
+offset_right = 1478.5
+offset_bottom = -848.5
+text = "Press Space SHOOT CATS!!"
+label_settings = SubResource("LabelSettings_tau6y")
 
 [node name="EndPoints" type="Node2D" parent="."]
 script = ExtResource("6_7nm8j")
