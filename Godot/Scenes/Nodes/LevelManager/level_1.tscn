@@ -75,28 +75,108 @@ scale = Vector2(5, 5)
 [node name="StoneWall" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
 position = Vector2(15437, -3172)
 
+[node name="Line" parent="StoneWalls/StoneWall" index="0"]
+position = Vector2(-633, -1145.5)
+rotation = -1.00094
+scale = Vector2(10.6288, 1.28435)
+
+[node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
+frame = 0
+
+[node name="RigidBody2D" parent="StoneWalls/StoneWall" index="2"]
+rotation = -1.5708
+
 [node name="StoneWall2" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
-position = Vector2(18863, -72)
+position = Vector2(16732, 213)
+
+[node name="Line" parent="StoneWalls/StoneWall2" index="0"]
+position = Vector2(-633, -1145.5)
+rotation = -1.00094
+scale = Vector2(10.6288, 1.28435)
+
+[node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
+frame = 0
+
+[node name="RigidBody2D" parent="StoneWalls/StoneWall2" index="2"]
+rotation = -1.5708
 
 [node name="StoneWall3" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
-position = Vector2(12913, -1102)
+position = Vector2(10927, -1027)
 
 [node name="WoodenWalls" type="Node2D" parent="."]
 
 [node name="WoodenWall" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
 position = Vector2(7719, -1578)
 
+[node name="Line" parent="WoodenWalls/WoodenWall" index="0"]
+position = Vector2(734, -1145.5)
+rotation = 1.06596
+scale = Vector2(10.2247, 1.28435)
+
+[node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
+frame = 0
+
+[node name="WoodenWallBody" parent="WoodenWalls/WoodenWall" index="2"]
+rotation = 1.5708
+
 [node name="WoodenWall2" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
 position = Vector2(10533, -4526)
+
+[node name="Line" parent="WoodenWalls/WoodenWall2" index="0"]
+position = Vector2(734, -1145.5)
+rotation = 1.06596
+scale = Vector2(10.2247, 1.28435)
+
+[node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
+frame = 0
+
+[node name="WoodenWallBody" parent="WoodenWalls/WoodenWall2" index="2"]
+rotation = 1.5708
+
+[node name="WoodenWall3" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
+position = Vector2(12843, 152)
+
+[node name="WoodenWall4" parent="WoodenWalls" instance=ExtResource("3_v8bk2")]
+position = Vector2(23898, -2245)
+
+[node name="Line" parent="WoodenWalls/WoodenWall4" index="0"]
+position = Vector2(-176, -1041)
+rotation = -1.35272
+scale = Vector2(10.0025, 1.28435)
+
+[node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
+frame = 0
+
+[node name="WoodenWallBody" parent="WoodenWalls/WoodenWall4" index="2"]
+position = Vector2(914, 209)
+rotation = -1.5708
 
 [node name="ExplosionBuckets" type="Node2D" parent="."]
 position = Vector2(6160, -144)
 
 [node name="ExplosionBucket" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
-position = Vector2(4378, 143)
+position = Vector2(2840, 2001)
 
 [node name="ExplosionBucket2" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
 position = Vector2(11736, -5232)
+
+[node name="ExplosionBucket3" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(235, 1944)
+
+[node name="ExplosionBucket4" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(13604, -1332)
+
+[node name="ExplosionBucket5" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(13643, 1351)
+
+[node name="ExplosionBucket6" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(15070, -3882)
+
+[node name="ExplosionBucket7" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(8372, -1104)
+
+[node name="ExplosionBucket8" parent="ExplosionBuckets" instance=ExtResource("4_qv0it")]
+position = Vector2(7954, -6641)
 
 [node name="StartPosition" parent="." instance=ExtResource("5_4pxah")]
 position = Vector2(1147, 1600)
@@ -104,9 +184,15 @@ position = Vector2(1147, 1600)
 [node name="EndPoints" type="Node2D" parent="."]
 
 [node name="EndPositionBlue" parent="EndPoints" instance=ExtResource("6_fxcgr")]
-position = Vector2(23122, 2122)
+position = Vector2(23093, 1261)
 texture = ExtResource("7_6fcf7")
 
 [node name="EndPositionPink" parent="EndPoints" instance=ExtResource("6_fxcgr")]
-position = Vector2(26100, 2125)
+position = Vector2(25382, 1294)
 texture = ExtResource("8_1yg2t")
+
+[editable path="StoneWalls/StoneWall"]
+[editable path="StoneWalls/StoneWall2"]
+[editable path="WoodenWalls/WoodenWall"]
+[editable path="WoodenWalls/WoodenWall2"]
+[editable path="WoodenWalls/WoodenWall4"]

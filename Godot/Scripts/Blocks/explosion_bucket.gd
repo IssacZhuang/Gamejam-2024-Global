@@ -23,9 +23,11 @@ func _on_character_body_entered_explosion_bucket(body):
 		
 		check_broke(body)
 	elif body.name == "Character1":
+		effectManager.trigger_effect_once(self.global_position, 0, Vector2(1,1), 0, "Explosion1")
 		print("Character1 hit wooden!")
 		check_broke(body)
 	elif body.name == "Character2":
+		effectManager.trigger_effect_once(self.global_position, 0, Vector2(1,1), 0, "Explosion1")
 		print("Character2 hit wooden!")
 		check_broke(body)
 	pass
