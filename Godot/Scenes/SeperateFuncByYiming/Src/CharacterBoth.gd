@@ -31,7 +31,7 @@ func _process(delta):
 	if is_active:
 		if cooldown_left > 0:
 			cooldown_left -= delta
-		
+
 		if cooldown_left <= 0:
 			if gunlance.state != gunlance.State.Normal:
 				gunlance.state = gunlance.State.Normal
@@ -62,7 +62,7 @@ func _on_character_body_entered(body):
 
 func shoot():
 	apply_impulse(initial_force)
-	
+
 func _integrate_forces(state):
 	"""
 		Behavior:
@@ -79,6 +79,7 @@ func _integrate_forces(state):
 		state.apply_impulse(thrust.rotated(rotation+1.57))
 		cooldown_left = cooldown_time
 		burst.emit()
+		$GPUParticles2D.emitting = true
 		start_invincible()
 	else:
 		state.apply_force(Vector2())
@@ -94,7 +95,7 @@ func start_invincible():
 	is_invincible = true
 	await get_tree().create_timer(1.0).timeout
 	is_invincible = false
-
+	$GPUParticles2D.emitting = false
 func on_separate():
 	is_active = false
 
