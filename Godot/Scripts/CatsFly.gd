@@ -19,6 +19,7 @@ func _process(delta):
 	# if action is pressed, then call 
 	if Input.is_action_just_pressed("game_start"):
 		charactorManager.on_start()
+		$LevelManager/Level1/Cannon/Label.hide()
 		game_start_signal.emit()
 
 
@@ -39,5 +40,4 @@ func game_win():
 
 func new_game():
 	print("StartNewGame")
-	#charactorManager.positon = $LevelManager/Level1/StartPosition.positon
 	$LevelManager.startLevel(1)
