@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=14 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
+[ext_resource type="Texture2D" uid="uid://c3h14qcd5c87x" path="res://Textures/Ground.png" id="2_3sju3"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
@@ -70,6 +71,56 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 
+[node name="1" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(1536, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="2" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(4608, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="3" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(7680, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="4" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(10752, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="5" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(13824, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="6" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(16896, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="7" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(19968, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="8" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(23040, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="9" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(26112, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
+[node name="10" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(29184, 3115)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3sju3")
+
 [node name="StoneWalls" type="Node2D" parent="."]
 
 [node name="StoneWall" parent="StoneWalls" instance=ExtResource("2_4g4k5")]
@@ -79,9 +130,6 @@ position = Vector2(15437, -3172)
 position = Vector2(-633, -1145.5)
 rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
-
-[node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
-frame = 0
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall" index="2"]
 rotation = -1.5708
@@ -93,9 +141,6 @@ position = Vector2(16732, 213)
 position = Vector2(-633, -1145.5)
 rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
-
-[node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
-frame = 0
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall2" index="2"]
 rotation = -1.5708
@@ -113,9 +158,6 @@ position = Vector2(734, -1145.5)
 rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
 
-[node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
-frame = 0
-
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall" index="2"]
 rotation = 1.5708
 
@@ -126,9 +168,6 @@ position = Vector2(10533, -4526)
 position = Vector2(734, -1145.5)
 rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
-
-[node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
-frame = 0
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall2" index="2"]
 rotation = 1.5708
@@ -143,9 +182,6 @@ position = Vector2(23898, -2245)
 position = Vector2(-176, -1041)
 rotation = -1.35272
 scale = Vector2(10.0025, 1.28435)
-
-[node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
-frame = 0
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall4" index="2"]
 position = Vector2(914, 209)
