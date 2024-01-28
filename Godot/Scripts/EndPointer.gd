@@ -1,22 +1,29 @@
 extends Camera2D
 
-var template: PackedScene = load("res://Scenes/end_pointer_prefab/sprite_2d.tscn")
+@export var indicator_blue: PackedScene
+@export var indicator_pink: PackedScene
+#var template: PackedScene = load("res://Scenes/end_pointer_prefab/sprite_2d.tscn")
 var end_points_node;
 var end_points_pointer : Array = [];
 
 var camera : Node2D
 var camera_pos: Vector2
 var window_size: Vector2
+var image_offset: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = get_viewport().get_camera_2d()
-	end_points_node = get_parent().get_node("Level1/EndPoints").get_children()
+	end_points_node = get_parent().get_node("LevelManager/Level1/EndPoints").get_children()
 	
 	for end_point_node in end_points_node:
-		var t = template.instantiate()
-		t.position = get_screen_center_position() + Vector2(0,500)
-		end_points_pointer.append(t)
-		add_child(t)
+		var dst_sprite
+		if end_point_node.name == "EndPositionBlue":
+			dst_sprite = indicator_blue.instantiate()
+		elif end_point_node.name == "EndPositionPink":
+			dst_sprite = indicator_pink.instantiate()
+		#dst_sprite.position = get_screen_center_position() + Vector2(0,500)
+		end_points_pointer.append(dst_sprite)
+		add_child(dst_sprite)
 	pass # Replace with function body.
 
 
@@ -32,6 +39,9 @@ func _process(_delta):
 	for i in range(end_points_node.size()):
 		var end_point = end_points_node[i]
 		var end_pointer = end_points_pointer[i]
+		# it is a magic number here according to the image
+		image_offset = Vector2(113, 122)
+
 		if isPointInScreen(end_point.position):
 			end_pointer.hide()
 		else:
@@ -48,9 +58,9 @@ func _process(_delta):
 					end_pointer.position.x = - direction.normalized().abs().aspect() * window_size.y / 2
 			
 				if direction.normalized().y < 0:
-					end_pointer.position.y = -window_size.y / 2
+					end_pointer.position.y = -window_size.y / 2 + image_offset.y
 				else:
-					end_pointer.position.y = window_size.y / 2
+					end_pointer.position.y = window_size.y / 2 - image_offset.y
 
 			else:
 				# stick to the left/right
@@ -60,9 +70,9 @@ func _process(_delta):
 				else:
 					end_pointer.position.y = - 1 / direction.normalized().abs().aspect() * window_size.x / 2
 				if direction.normalized().x < 0:
-					end_pointer.position.x = -window_size.x / 2
+					end_pointer.position.x = -window_size.x / 2 + image_offset.x
 				else:
-					end_pointer.position.x = window_size.x / 2
+					end_pointer.position.x = window_size.x / 2 - image_offset.x
 
 	pass
 

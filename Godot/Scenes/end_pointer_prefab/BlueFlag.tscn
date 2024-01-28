@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmdty4ebejf7"]
+
+[ext_resource type="Texture2D" uid="uid://ca02bmas3twea" path="res://Textures/Cat/CatHead.PNG" id="1_0wrmx"]
+
+[node name="BlueFlag" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0wrmx")
