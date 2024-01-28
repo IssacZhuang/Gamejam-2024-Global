@@ -34,6 +34,9 @@ func _process(delta):
 			gunlance.state = gunlance.State.Overheat
 			can_burst = false
 
+func on_start():
+	is_active = false
+
 func _integrate_forces(state):
 	"""
 		Behavior:
@@ -62,10 +65,11 @@ func on_separate():
 func on_character_body_entered(body):
 
 	if body.name == "Floor":
-		emit_signal("game_over")
+		get_node("/root/Node2D").game_over()
 	elif body.name == "Character2":
 		return
 	else:
-		emit_signal("collide_with_barrier")
+		# emit_signal("collide_with_barrier")
+		print("collide_with_barrier")
 #func start():
 	#sleeping = false

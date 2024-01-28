@@ -17,10 +17,11 @@ signal burst
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	can_burst = true
-	is_active = true
+	is_active = false
 	body_entered.connect(_on_character_body_entered)
+	freeze = true
 	#sleeping = true
-	shoot()
+	# shoot()
 
 	pass # Replace with function body.
 
@@ -30,7 +31,7 @@ func _process(delta):
 	if is_active:
 		if cooldown_left > 0:
 			cooldown_left -= delta
-		
+
 		if cooldown_left <= 0:
 			if gunlance.state != gunlance.State.Normal:
 				gunlance.state = gunlance.State.Normal
@@ -38,21 +39,30 @@ func _process(delta):
 		else:
 			gunlance.state = gunlance.State.Overheat
 			can_burst = false
+
+
+func on_start():
+	is_active = true
+	freeze = false
+	shoot()
+
 #func _physics_process(delta):
 	#if body_entered(node):
 		#print(node.name)
 func _on_character_body_entered(body):
 	print(body.name)
 	if body.name == "Floor":
-		emit_signal("game_over")
+		# emit_signal("game_over")
+		get_node("/root/Node2D").game_over()
 	elif body.name == "Character2":
 		return
 	else:
-		emit_signal("collide_with_barrier")
+		# emit_signal("collide_with_barrier")
+		print("collide_with_barrier")
 
 func shoot():
 	apply_impulse(initial_force)
-	
+
 func _integrate_forces(state):
 	"""
 		Behavior:
