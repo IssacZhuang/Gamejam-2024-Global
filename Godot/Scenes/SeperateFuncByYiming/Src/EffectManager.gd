@@ -41,8 +41,8 @@ func trigger_effect_by_name(node_name):
 func trigger_effect_once(target_position: Vector2, target_rotation: float, target_scale: Vector2, target_skew: float, effect_name: String):
 	# position: position to spawn effect
 	# effect_name: name of effect
-	var effect = load(effect_dict[effect_name])
-	var effect_instance = effect.instantiate()
+	var effect_instance = effect_dict[effect_name].duplicate()
+	#var effect_instance = effect.instantiate()
 	effect_instance.position = target_position
 	effect_instance.rotation = target_rotation
 	effect_instance.scale = target_scale
@@ -84,7 +84,8 @@ func scan_dir(path, ext):
 			else:
 				if file_name.ends_with(ext):
 					# add to array
-					effect_dict[file_name.get_basename()] = path + "/" + file_name
+					var target_file_path = path + "/" + file_name
+					effect_dict[file_name.get_basename()] = load(target_file_path).instantiate()
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
