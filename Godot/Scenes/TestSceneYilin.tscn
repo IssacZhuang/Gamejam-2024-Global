@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/SoundManager.gd" id="1_giy5v"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterManager.gd" id="3_f20hd"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterBoth.gd" id="4_icukb"]
-[ext_resource type="PackedScene" path="res://Effect/Burst.tscn" id="5_klg7j"]
+[ext_resource type="PackedScene" uid="uid://c8l4r71xwih04" path="res://Effect/Burst.tscn" id="5_klg7j"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterPower.gd" id="5_lfg7l"]
 [ext_resource type="Texture2D" uid="uid://c4mym7ibqq5in" path="res://Textures/Cat/PlayerPower.png" id="6_twwcx"]
 [ext_resource type="Script" path="res://Scenes/SeperateFuncByYiming/Src/CharacterRotation.gd" id="7_k6dpy"]

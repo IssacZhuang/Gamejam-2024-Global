@@ -37,9 +37,9 @@ size = Vector2(600, 3000)
 [node name="StoneWall" type="Node2D"]
 
 [node name="Line" type="Sprite2D" parent="."]
-position = Vector2(50.5, -1829)
-rotation = -1.46192
-scale = Vector2(3.63087, 1.28435)
+position = Vector2(50.5, -1145.5)
+rotation = -1.52674
+scale = Vector2(8.95791, 1.28435)
 skew = -0.293035
 texture = ExtResource("1_2nvgi")
 
@@ -59,6 +59,7 @@ scale = Vector2(0.05, 0.029)
 skew = 0.00343871
 texture = ExtResource("3_c55c5")
 hframes = 2
+frame = 1
 script = ExtResource("4_e8bs2")
 playSpeed = 50
 
@@ -82,7 +83,6 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_idj8f")
 
 [node name="LinkAnchor" type="Node2D" parent="RigidBody2D"]
-position = Vector2(0, -1367)
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(-13.4114, 25.846)
