@@ -209,6 +209,7 @@ effects = Array[Resource]([ExtResource("7_svw1a"), ExtResource("8_ghg1g"), ExtRe
 [node name="EffectManagerNode2D" type="Node2D" parent="."]
 script = ExtResource("11_fp7qa")
 
+[connection signal="game_start_signal" from="." to="SoundManagerNode2D" method="play_music" binds= ["bgm_gaming"]]
 [connection signal="separate" from="CharacteManager" to="SoundManagerNode2D" method="play_fx" binds= ["separate"]]
 [connection signal="burst" from="CharacteManager/CharacterBoth" to="SoundManagerNode2D" method="play_fx" binds= ["burst"]]
 [connection signal="burst" from="CharacteManager/CharacterBoth" to="EffectManagerNode2D" method="trigger_effect_by_name" binds= ["Burst"]]
