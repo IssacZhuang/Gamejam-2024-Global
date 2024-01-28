@@ -16,6 +16,7 @@ signal burst
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$GPUParticles2D.emitting = false
 	can_burst = true
 	is_active = false
 	body_entered.connect(_on_character_body_entered)
