@@ -36,9 +36,11 @@ func _integrate_forces(state):
 		var rotation_direction = 0
 		if Input.is_action_pressed("player_rotation_left"):
 			print("player_rotation_left")
+			state.apply_force(Vector2(-500,0))
 			rotation_direction -= 1
 		if Input.is_action_pressed("player_rotation_right"):
 			print("player_rotation_right")
+			state.apply_force(Vector2(500,0))
 			rotation_direction += 1
 		state.apply_torque(rotation_direction * torque)
 

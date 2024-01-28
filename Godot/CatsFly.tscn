@@ -60,7 +60,7 @@ indicator_pink = ExtResource("4_se546")
 texture = ExtResource("5_8crl4")
 script = ExtResource("6_i0fjb")
 camera = NodePath("..")
-relativeScale = 15.0
+relativeScale = 1.0
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("2_12wps")
@@ -89,9 +89,10 @@ char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
 separate_force = Vector2(500, -1000)
 camera = NodePath("../Camera2D")
-default_zoom = 0.265
+default_zoom = 0.2
 min_zoom = 0.1
-max_zoom = 0.265
+max_zoom = 0.2
+margin = Vector2(800, 400)
 
 [node name="CharacterBoth" type="RigidBody2D" parent="CharacteManager" node_paths=PackedStringArray("gunlance")]
 position = Vector2(774, 1716)
@@ -99,7 +100,7 @@ gravity_scale = 0.5
 center_of_mass_mode = 1
 max_contacts_reported = 5
 contact_monitor = true
-constant_force = Vector2(1000, 0)
+constant_force = Vector2(500, 0)
 script = ExtResource("13_bb65v")
 thrust = Vector2(0, -2000)
 torque = 1000000
