@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://hq0mxgb6gjdk"]
+[gd_scene load_steps=16 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
 [ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
+[ext_resource type="PackedScene" uid="uid://kx5afa1clky1" path="res://Prefab/Cannon.tscn" id="6_1scen"]
 [ext_resource type="Script" path="res://Scenes/Nodes/LevelManager/EndPoints.gd" id="6_7nm8j"]
 [ext_resource type="PackedScene" uid="uid://c8hbpb2fb2lru" path="res://Scenes/Nodes/LevelManager/end_position.tscn" id="6_fxcgr"]
 [ext_resource type="Texture2D" uid="uid://bgvqj88v6aj54" path="res://Textures/Flag/FlagBlue.png" id="7_6fcf7"]
@@ -93,7 +94,7 @@ rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
 
 [node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall" index="2"]
 rotation = -1.5708
@@ -107,7 +108,7 @@ rotation = -1.00094
 scale = Vector2(10.6288, 1.28435)
 
 [node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall2" index="2"]
 rotation = -1.5708
@@ -126,7 +127,7 @@ rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall" index="2"]
 rotation = 1.5708
@@ -140,7 +141,7 @@ rotation = 1.06596
 scale = Vector2(10.2247, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall2" index="2"]
 rotation = 1.5708
@@ -157,7 +158,7 @@ rotation = -1.35272
 scale = Vector2(10.0025, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
-frame = 0
+frame = 1
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall4" index="2"]
 position = Vector2(914, 209)
@@ -188,7 +189,17 @@ position = Vector2(15070, -3882)
 position = Vector2(7954, -6641)
 
 [node name="StartPosition" parent="." instance=ExtResource("5_4pxah")]
-position = Vector2(1147, 1600)
+position = Vector2(2296, 1225)
+
+[node name="Cannon" parent="." instance=ExtResource("6_1scen")]
+position = Vector2(1316, 1685)
+scale = Vector2(2, 2)
+
+[node name="BarrelCenter" parent="Cannon" index="0"]
+rotation = -0.513832
+
+[node name="Focus" parent="Cannon" index="2"]
+position = Vector2(1532, -820.5)
 
 [node name="EndPoints" type="Node2D" parent="."]
 script = ExtResource("6_7nm8j")
@@ -208,3 +219,4 @@ texture = ExtResource("8_1yg2t")
 [editable path="WoodenWalls/WoodenWall"]
 [editable path="WoodenWalls/WoodenWall2"]
 [editable path="WoodenWalls/WoodenWall4"]
+[editable path="Cannon"]

@@ -39,4 +39,5 @@ func game_win():
 
 func new_game():
 	print("StartNewGame")
+	#charactorManager.positon = $LevelManager/Level1/StartPosition.positon
 	$LevelManager.startLevel(1)
