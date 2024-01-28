@@ -37,9 +37,9 @@ size = Vector2(600, 3000)
 [node name="WoodenWall" type="Node2D"]
 
 [node name="Line" type="Sprite2D" parent="."]
-position = Vector2(50.5, -1829)
-rotation = -1.46192
-scale = Vector2(3.63087, 1.28435)
+position = Vector2(50.5, -1145.5)
+rotation = -1.52674
+scale = Vector2(8.95791, 1.28435)
 skew = -0.293035
 texture = ExtResource("3_cj0wn")
 
@@ -78,7 +78,6 @@ angular_damp = 90.0
 script = ExtResource("1_ssinf")
 
 [node name="LinkAnchor" type="Node2D" parent="WoodenWallBody"]
-position = Vector2(0, -1367)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WoodenWallBody"]
 shape = SubResource("RectangleShape2D_q743r")
