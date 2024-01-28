@@ -50,9 +50,12 @@ func _ready():
 	separate.connect(char2.on_separate)
 	separate.connect(charBoth.on_separate)
 	return
+	
 
 func on_start():
-	pass
+	char1.on_start()
+	char2.on_start()
+	charBoth.on_start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

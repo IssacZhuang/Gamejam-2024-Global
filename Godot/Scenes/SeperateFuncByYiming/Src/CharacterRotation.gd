@@ -19,6 +19,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func on_start():
+	is_active = false
+
 func _integrate_forces(state):
 	"""
 		Behavior:
@@ -42,11 +45,13 @@ func _integrate_forces(state):
 func on_character_body_entered(body):
 	print(body.name)
 	if body.name == "Floor":
-		emit_signal("game_over")
+		# emit_signal("game_over")
+		get_node("/root/Node2D").game_over()
 	elif body.name == "Character1":
 		return
 	else:
-		emit_signal("collide_with_barrier")
+		# emit_signal("collide_with_barrier")
+		print("collide_with_barrier")
 func on_separate():
 	is_active = true
 
