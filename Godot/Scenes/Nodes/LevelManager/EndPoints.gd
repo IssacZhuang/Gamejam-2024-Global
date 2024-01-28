@@ -12,7 +12,7 @@ func _process(delta):
 	done_level()
 
 func done_level():
-	if scan_all_children_is_done():
+	if scan_all_children_is_done() and is_done == false:
 		is_done = true
 		get_node("/root/Node2D").game_win()
 
