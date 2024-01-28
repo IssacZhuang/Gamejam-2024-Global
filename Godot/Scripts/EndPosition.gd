@@ -26,20 +26,17 @@ func _ready():
 
 func _on_character_body_entered_end_point(body):
 	print("end")
-	if body.name == "CharacterBoth":
+	if body.name == "CharacterBoth" and endpointType == endpoint_type.BothEnd:
 		done_level(body)
-	elif body.name == "Character1":
+	elif body.name == "Character1" and endpointType == endpoint_type.powerEnd:
 		done_level(body)
-	elif body.name == "Character2":
+	elif body.name == "Character2" and endpointType == endpoint_type.rotiationEnd:
 		done_level(body)
 	pass
 
 func done_level(body):
 	if not is_done:
-		soundManager.stop_music()
-		soundManager.play_music("bgm_end")
 		is_done = true
-
 
 
 
