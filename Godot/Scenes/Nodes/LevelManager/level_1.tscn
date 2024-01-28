@@ -1,6 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
+[ext_resource type="Texture2D" uid="uid://c3h14qcd5c87x" path="res://Textures/Ground.png" id="2_3sju3"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
@@ -79,6 +80,51 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 
+[node name="1" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(2048, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="2" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(6144, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="3" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(10240, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="4" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(14336, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="5" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(18432, 3623)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="6" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(22528, 3623)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="7" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(26624, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="8" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(30720, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
+[node name="9" type="Sprite2D" parent="SideLimit/Floor"]
+position = Vector2(-2048, 3624)
+scale = Vector2(4, 4)
+texture = ExtResource("2_3sju3")
+
 [node name="EndArea" type="StaticBody2D" parent="SideLimit"]
 position = Vector2(26159, 3202)
 
@@ -93,7 +139,7 @@ metadata/_edit_group_ = true
 position = Vector2(15437, -3172)
 
 [node name="Bug" parent="StoneWalls/StoneWall/Node2D" index="0"]
-frame = 1
+frame = 0
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall" index="2"]
 rotation = -1.5708
@@ -102,7 +148,7 @@ rotation = -1.5708
 position = Vector2(16732, 213)
 
 [node name="Bug" parent="StoneWalls/StoneWall2/Node2D" index="0"]
-frame = 1
+frame = 0
 
 [node name="RigidBody2D" parent="StoneWalls/StoneWall2" index="2"]
 rotation = -1.5708
@@ -119,7 +165,7 @@ position = Vector2(7719, -1578)
 scale = Vector2(8.95791, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall/Node2D" index="0"]
-frame = 1
+frame = 0
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall" index="2"]
 rotation = 1.5708
@@ -131,7 +177,7 @@ position = Vector2(10533, -4526)
 scale = Vector2(8.95791, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall2/Node2D" index="0"]
-frame = 1
+frame = 0
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall2" index="2"]
 rotation = 1.5708
@@ -148,7 +194,7 @@ rotation = 1.25638
 scale = Vector2(10.269, 1.28435)
 
 [node name="Bug" parent="WoodenWalls/WoodenWall4/Node2D" index="0"]
-frame = 1
+frame = 0
 
 [node name="WoodenWallBody" parent="WoodenWalls/WoodenWall4" index="2"]
 position = Vector2(914, 209)
