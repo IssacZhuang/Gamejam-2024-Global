@@ -28,7 +28,7 @@ func check_broke(body):
 func _on_character_body_entered_wooden_wall(body):
 	if body.name == "CharacterBoth" or body.name == "Character2" or body.name == "Character1":
 		# print("CharacterBoth hit wooden!")
-		cooldown_left = cooldown_time
+		cooldown_left = sound_cooldown_time
 		if can_sound == true:
 			soundManager.play_fx("hit_block")
 		check_broke(body)
