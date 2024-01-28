@@ -12,6 +12,7 @@ var is_active = true
 var cooldown_left = 0
 var can_burst: bool
 var is_invincible: bool
+var can_shoot: bool
 signal burst
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,7 @@ func _ready():
 	is_active = false
 	body_entered.connect(_on_character_body_entered)
 	freeze = true
+	can_shoot = true
 	#sleeping = true
 	# shoot()
 
@@ -45,7 +47,9 @@ func _process(delta):
 func on_start():
 	is_active = true
 	freeze = false
-	shoot()
+	if can_shoot:
+		shoot()
+		can_shoot = false
 
 #func _physics_process(delta):
 	#if body_entered(node):
