@@ -79,6 +79,7 @@ script = ExtResource("12_ufdxf")
 char1 = NodePath("CharacterBoth/Character1")
 char2 = NodePath("CharacterBoth/Character2")
 charBoth = NodePath("CharacterBoth")
+separate_force = Vector2(500, -1000)
 camera = NodePath("../Camera2D")
 default_zoom = 0.265
 min_zoom = 0.1
@@ -90,7 +91,7 @@ gravity_scale = 0.5
 center_of_mass_mode = 1
 max_contacts_reported = 5
 contact_monitor = true
-constant_force = Vector2(10, 0)
+constant_force = Vector2(100, 0)
 script = ExtResource("13_bb65v")
 thrust = Vector2(0, -2000)
 torque = 1000000
@@ -112,6 +113,7 @@ position = Vector2(2, 3)
 center_of_mass_mode = 1
 max_contacts_reported = 5
 contact_monitor = true
+constant_force = Vector2(100, 0)
 script = ExtResource("14_148ox")
 thrust = Vector2(0, -2000)
 gunlance = NodePath("Gunlance")
@@ -157,9 +159,11 @@ texture = ExtResource("22_sjykn")
 
 [node name="Character2" type="RigidBody2D" parent="CharacteManager/CharacterBoth"]
 position = Vector2(13, -9)
+gravity_scale = 0.5
 center_of_mass_mode = 1
 max_contacts_reported = 5
 contact_monitor = true
+constant_force = Vector2(100, 0)
 script = ExtResource("17_nrdos")
 torque = 100000
 
