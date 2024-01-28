@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ouoxfj1us7ng"]
+[gd_scene load_steps=8 format=3 uid="uid://ouoxfj1us7ng"]
 
 [ext_resource type="Texture2D" uid="uid://b32risdjfgkje" path="res://Textures/UI/Button.PNG" id="1_f5twd"]
 [ext_resource type="Texture2D" uid="uid://byx2mjdfchsc0" path="res://Textures/UI/ButtonPressed.PNG" id="2_14xy7"]
 [ext_resource type="Texture2D" uid="uid://0drf7r1mavxl" path="res://Textures/UI/IconPlay.PNG" id="3_w0ogn"]
 [ext_resource type="Texture2D" uid="uid://ukehlgbtt5nc" path="res://Textures/UI/IconInfo.PNG" id="4_g6fje"]
 [ext_resource type="Texture2D" uid="uid://clx00a4sgexyg" path="res://Textures/UI/IconExit.PNG" id="5_71gnp"]
+[ext_resource type="PackedScene" uid="uid://pug3twlkyols" path="res://Prefab/CatGunlance.tscn" id="6_nu3d7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qmvr7"]
 font_size = 64
@@ -17,6 +18,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.372549, 0.513726, 0.584314, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1680, 945)
 layout_mode = 1
@@ -25,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -8.0
-offset_right = 2.0
-offset_bottom = 8.0
+offset_left = -314.0
+offset_top = -545.0
+offset_right = 1370.0
+offset_bottom = 411.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -38,6 +48,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(735, 0)
 layout_mode = 2
+alignment = 1
 
 [node name="Logo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 189)
@@ -67,11 +78,15 @@ texture = ExtResource("3_w0ogn")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Start"]
 layout_mode = 0
-offset_left = 183.0
-offset_right = 333.0
+offset_left = 197.0
+offset_right = 347.0
 offset_bottom = 88.0
 text = "Start"
 label_settings = SubResource("LabelSettings_qmvr7")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
 
 [node name="Info" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 94.5)
@@ -90,15 +105,20 @@ stretch_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Info"]
 layout_mode = 0
-offset_left = 183.0
-offset_right = 333.0
+offset_left = 197.0
+offset_right = 347.0
 offset_bottom = 88.0
 text = "Info"
 label_settings = SubResource("LabelSettings_qmvr7")
 
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
 [node name="Exit" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 94.5)
 layout_mode = 2
+size_flags_vertical = 3
 texture_normal = ExtResource("1_f5twd")
 texture_pressed = ExtResource("2_14xy7")
 
@@ -112,20 +132,12 @@ texture = ExtResource("5_71gnp")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit"]
 layout_mode = 0
-offset_left = 183.0
-offset_right = 333.0
+offset_left = 197.0
+offset_right = 347.0
 offset_bottom = 88.0
 text = "Exit
 "
 label_settings = SubResource("LabelSettings_qmvr7")
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 94.5)
-layout_mode = 2
-
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 94.5)
-layout_mode = 2
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 94.5)
@@ -146,3 +158,11 @@ layout_mode = 2
 [node name="MainPicture" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(945, 945)
 layout_mode = 2
+
+[node name="CatGunlance" parent="." instance=ExtResource("6_nu3d7")]
+position = Vector2(1233, 847)
+
+[node name="Gunlance" parent="CatGunlance" index="4"]
+state = 1
+
+[editable path="CatGunlance"]
