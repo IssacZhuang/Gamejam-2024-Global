@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://hry5a7qylsl8"]
+
+[ext_resource type="Texture2D" uid="uid://guwm0x5cs10r" path="res://Textures/Effect/Star.png" id="1_qbjr0"]
+
+[sub_resource type="Curve" id="Curve_je7jf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.998138, 0.228209), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xgr02"]
+curve = SubResource("Curve_je7jf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tfrfo"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = -444.3
+angle_max = 510.6
+spread = 180.0
+initial_velocity_min = 90.0
+initial_velocity_max = 270.85
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_xgr02")
+
+[node name="Stun" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_tfrfo")
+texture = ExtResource("1_qbjr0")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0

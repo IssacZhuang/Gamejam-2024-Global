@@ -2,11 +2,17 @@ extends Node2D
 
 signal game_start_signal
 signal game_over_signal
+signal game_win_signal
 
 @export var charactorManager: Node2D
+@export var soundManager: Node2D
+
+var is_done = false
 
 func _ready():
+	is_done = false
 	charactorManager = get_node("/root/Node2D/CharacteManager")
+	soundManager = get_node("/root/Node2D/SoundManagerNode2D")
 	new_game()
 	
 func _process(delta):
@@ -17,10 +23,17 @@ func _process(delta):
 
 
 func game_over():
-	print("Game Over")
-	game_over_signal.emit()
-	get_tree().reload_current_scene()
+	if not is_done:
+		print("Game Over")
+		game_over_signal.emit()
+		get_tree().reload_current_scene()
+
+func game_win():
 	# new_game()
+	is_done = true
+	soundManager.stop_music()
+	soundManager.play_music("bgm_end")
+	game_win_signal.emit()
 
 
 func new_game():

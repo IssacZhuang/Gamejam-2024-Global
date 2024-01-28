@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://hq0mxgb6gjdk"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_f1vo5"]
-[ext_resource type="Texture2D" uid="uid://c3h14qcd5c87x" path="res://Textures/Ground.png" id="2_3sju3"]
 [ext_resource type="PackedScene" uid="uid://dinen2grqogrm" path="res://Scenes/Nodes/LevelManager/Blocks/stone_wall.tscn" id="2_4g4k5"]
 [ext_resource type="PackedScene" uid="uid://dkgfesg3ubk2c" path="res://Scenes/Nodes/LevelManager/Blocks/wooden_wall.tscn" id="3_v8bk2"]
 [ext_resource type="PackedScene" uid="uid://by4dpg8f75bx1" path="res://Scenes/Nodes/LevelManager/Blocks/explosion_bucket.tscn" id="4_qv0it"]
 [ext_resource type="PackedScene" uid="uid://d1ytwomfrp1p4" path="res://Scenes/Nodes/LevelManager/start_position.tscn" id="5_4pxah"]
+[ext_resource type="Script" path="res://Scenes/Nodes/LevelManager/EndPoints.gd" id="6_7nm8j"]
 [ext_resource type="PackedScene" uid="uid://c8hbpb2fb2lru" path="res://Scenes/Nodes/LevelManager/end_position.tscn" id="6_fxcgr"]
 [ext_resource type="Texture2D" uid="uid://bgvqj88v6aj54" path="res://Textures/Flag/FlagBlue.png" id="7_6fcf7"]
 [ext_resource type="Texture2D" uid="uid://08wbwxlo84fh" path="res://Textures/Flag/FlagPink.png" id="8_1yg2t"]
@@ -70,56 +70,6 @@ offset_bottom = 1879.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
-
-[node name="1" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(1536, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="2" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(4608, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="3" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(7680, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="4" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(10752, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="5" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(13824, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="6" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(16896, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="7" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(19968, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="8" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(23040, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="9" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(26112, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
-
-[node name="10" type="Sprite2D" parent="SideLimit/Floor"]
-position = Vector2(29184, 3115)
-scale = Vector2(3, 3)
-texture = ExtResource("2_3sju3")
 
 [node name="StoneWalls" type="Node2D" parent="."]
 
@@ -233,13 +183,16 @@ position = Vector2(7954, -6641)
 position = Vector2(1147, 1600)
 
 [node name="EndPoints" type="Node2D" parent="."]
+script = ExtResource("6_7nm8j")
 
 [node name="EndPositionBlue" parent="EndPoints" instance=ExtResource("6_fxcgr")]
 position = Vector2(23093, 1261)
+endpointType = 1
 texture = ExtResource("7_6fcf7")
 
 [node name="EndPositionPink" parent="EndPoints" instance=ExtResource("6_fxcgr")]
 position = Vector2(25382, 1294)
+endpointType = 0
 texture = ExtResource("8_1yg2t")
 
 [editable path="StoneWalls/StoneWall"]
