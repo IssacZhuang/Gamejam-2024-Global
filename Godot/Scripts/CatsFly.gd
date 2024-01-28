@@ -30,6 +30,7 @@ func game_over():
 
 func game_win():
 	# new_game()
+	print("victory")
 	is_done = true
 	soundManager.stop_music()
 	soundManager.play_music("bgm_end")
