@@ -10,6 +10,7 @@ func _ready():
 
 
 func check_broke(body):
+	print(body.name)
 	if body.is_invincible == true:
 		woodenwall_destroy()
 
@@ -29,5 +30,5 @@ func _on_character_body_entered_wooden_wall(body):
 
 
 func woodenwall_destroy():
-	queue_free()
+	self.get_parent().queue_free()
 	

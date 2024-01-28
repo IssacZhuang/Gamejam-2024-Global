@@ -32,5 +32,5 @@ func _on_character_body_entered_explosion_bucket(body):
 
 
 func explosion_destroy():
-	queue_free()
+	self.get_parent().queue_free()
 	

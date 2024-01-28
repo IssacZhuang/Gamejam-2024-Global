@@ -1,16 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkgfesg3ubk2c"]
+[gd_scene load_steps=14 format=3 uid="uid://dkgfesg3ubk2c"]
 
 [ext_resource type="Script" path="res://Scripts/Blocks/wooden_wall.gd" id="1_ssinf"]
+[ext_resource type="Script" path="res://Scripts/FlyBugs.gd" id="2_om7rw"]
+[ext_resource type="Texture2D" uid="uid://d3jvunicf8yya" path="res://Textures/FlyBug/FlyBugLine.png" id="3_cj0wn"]
+[ext_resource type="Texture2D" uid="uid://5bxoqyrn7l2r" path="res://Textures/FlyBug/FlyBugAnim.png" id="5_g4gcq"]
+[ext_resource type="Script" path="res://Scripts/AnimSprite2D.gd" id="6_56ohh"]
+[ext_resource type="Texture2D" uid="uid://bno81fy5ad3jy" path="res://Textures/Effect/Bloom.png" id="7_g4dll"]
+[ext_resource type="Texture2D" uid="uid://gc2q5xc2v0yr" path="res://Textures/Wall/ice.png" id="7_t36de"]
+
+[sub_resource type="Curve" id="Curve_c5or0"]
+_data = [Vector2(0.0111732, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.108007, 0.174674), 0.0, 0.0, 0, 0, Vector2(0.221602, 0.0185312), 0.0, 0.0, 0, 0, Vector2(0.366853, 0.152368), 0.0, 0.0, 0, 0, Vector2(0.467412, 0.0319149), 0.0, 0.0, 0, 0, Vector2(0.616387, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.724395, 0.01407), 0.0, 0.0, 0, 0, Vector2(0.8473, 0.170213), 0.0, 0.0, 0, 0, Vector2(0.998138, 0.00514758), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_j1qk6"]
+curve = SubResource("Curve_c5or0")
+
+[sub_resource type="Curve" id="Curve_gcs5q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dvyxo"]
+curve = SubResource("Curve_gcs5q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gljpn"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_dvyxo")
+color = Color(0.847059, 1, 1, 1)
+alpha_curve = SubResource("CurveTexture_j1qk6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q743r"]
 size = Vector2(600, 3000)
 
-[node name="WoodenWall" type="RigidBody2D"]
-position = Vector2(10126, -34)
+[node name="WoodenWall" type="Node2D"]
+
+[node name="Line" type="Sprite2D" parent="."]
+position = Vector2(50.5, -1829)
+rotation = -1.46192
+scale = Vector2(3.63087, 1.28435)
+skew = -0.293035
+texture = ExtResource("3_cj0wn")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("node1", "node2", "line")]
+position = Vector2(101, -2291)
+rotation = 1.56962
+scale = Vector2(82.684, 45.3639)
+skew = -0.00129104
+script = ExtResource("2_om7rw")
+node1 = NodePath(".")
+node2 = NodePath("../WoodenWallBody/LinkAnchor")
+line = NodePath("../Line")
+
+[node name="Bug" type="Sprite2D" parent="Node2D"]
+rotation = -1.5708
+scale = Vector2(0.05, 0.029)
+skew = 0.00343871
+texture = ExtResource("5_g4gcq")
+hframes = 2
+frame = 1
+script = ExtResource("6_56ohh")
+playSpeed = 50
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Bug"]
+position = Vector2(38, -5)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_gljpn")
+texture = ExtResource("7_g4dll")
+local_coords = true
+
+[node name="WoodenWallBody" type="RigidBody2D" parent="."]
+mass = 3.0
 gravity_scale = 0.0
-max_contacts_reported = 6
+max_contacts_reported = 5
 contact_monitor = true
+angular_damp = 90.0
 script = ExtResource("1_ssinf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="LinkAnchor" type="Node2D" parent="WoodenWallBody"]
+position = Vector2(0, -1367)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodenWallBody"]
 shape = SubResource("RectangleShape2D_q743r")
+
+[node name="Sprite2D" type="Sprite2D" parent="WoodenWallBody"]
+position = Vector2(-16.4283, -452.363)
+rotation = 3.14159
+scale = Vector2(9.25908, 9.08084)
+texture = ExtResource("7_t36de")
